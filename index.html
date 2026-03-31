@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechMasters Hackathon 2026</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="TechMasters Logo" class="logo-img"
+                    onerror="this.src='https://via.placeholder.com/40x40?text=TM'">
+                <span class="logo-text">Tech<span class="logo-highlight">Masters</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active" data-page="home">Home</a>
+                <a href="#" data-page="register">Register</a>
+                <a href="#" data-page="login">Login</a>
+                <a href="#" data-page="dashboard" id="dashboardNavLink" style="display: none;">Dashboard</a>
+                <button id="themeToggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container - Dynamic content loads here -->
+    <div id="app-container"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="TechMasters Logo" class="footer-logo-img"
+                            onerror="this.src='https://via.placeholder.com/40x40?text=TM'">
+                        <span>Tech<span>Masters</span></span>
+                    </div>
+                    <p>Empowering innovation through technology and collaboration. Join us in shaping the future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" data-page="home">Home</a></li>
+                        <li><a href="#" data-page="register">Register</a></li>
+                        <li><a href="#" data-page="login">Login</a></li>
+                        <li><a href="admin.html">Admin Panel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Rules & Guidelines</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> Techmasterstrangings@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +91 9108950128</p>
+                    <p><i class="fas fa-map-marker-alt"></i> TechMasters Pvt Ltd<br>Bangalore, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TechMasters Pvt Ltd. All rights reserved. | Built with <i class="fas fa-heart"></i> for
+                    innovation</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
