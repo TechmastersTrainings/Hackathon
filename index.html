@@ -65,9 +65,6 @@
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ============================================
-           LIGHT MODE (PURPLE & WHITE)
-           ============================================ */
         body.light-mode {
             --bg-body: #fafafa;
             --bg-surface: #ffffff;
@@ -84,9 +81,6 @@
             --primary-glow: rgba(147, 51, 234, 0.08);
         }
 
-        /* ============================================
-           GLOBAL RESETS
-           ============================================ */
         *,
         *::before,
         *::after {
@@ -98,7 +92,6 @@
         html {
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
@@ -181,7 +174,7 @@
             gap: 2rem;
         }
 
-        /* ========== PARTNERS & SPONSORS RECTANGLE CARDS ========== */
+        /* ========== PARTNERS & SPONSORS ========== */
         #hosting-partners-container,
         #sponsors-container {
             display: flex;
@@ -280,9 +273,7 @@
             width: 100%;
         }
 
-        /* ============================================
-           NAVIGATION
-           ============================================ */
+        /* ============================================ NAVIGATION ============================================ */
         nav {
             position: fixed;
             top: 0;
@@ -425,9 +416,125 @@
             box-shadow: 0 8px 30px rgba(34, 197, 94, 0.3);
         }
 
-        /* ============================================
-           PROBLEM STATEMENT MODAL (UPDATED FOR MULTI-SELECT)
-           ============================================ */
+        /* ============================================ REGISTRATION TYPE SELECTION ============================================ */
+        .reg-type-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .reg-type-card {
+            background: var(--bg-surface);
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reg-type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .reg-type-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .reg-type-card:hover::before {
+            opacity: 1;
+        }
+
+        .reg-type-card.active {
+            border-color: var(--primary);
+            background: linear-gradient(145deg, var(--bg-surface), rgba(147, 51, 234, 0.08));
+            box-shadow: 0 0 30px rgba(147, 51, 234, 0.2);
+        }
+
+        .reg-type-card.active::before {
+            opacity: 1;
+        }
+
+        .reg-type-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            background: rgba(147, 51, 234, 0.1);
+            color: var(--primary);
+            transition: all var(--transition);
+        }
+
+        .reg-type-card.active .reg-type-icon {
+            background: rgba(147, 51, 234, 0.2);
+            transform: scale(1.1);
+        }
+
+        .reg-type-card h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .reg-type-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .reg-type-price {
+            display: inline-block;
+            background: rgba(147, 51, 234, 0.12);
+            border: 1px solid rgba(147, 51, 234, 0.25);
+            color: var(--primary);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .reg-type-check {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            opacity: 0;
+            transform: scale(0);
+            transition: all var(--transition);
+        }
+
+        .reg-type-card.active .reg-type-check {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ============================================ PROBLEM STATEMENT MODAL ============================================ */
         .problem-modal {
             position: fixed;
             top: 0;
@@ -597,10 +704,6 @@
             font-weight: 600;
         }
 
-        .selected-theme-badge i {
-            color: var(--primary);
-        }
-
         .selected-problems-container {
             background: var(--bg-surface);
             border-radius: 20px;
@@ -684,6 +787,7 @@
             color: #fff;
         }
 
+        /* ============================================ HERO ============================================ */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -693,8 +797,7 @@
             position: relative;
             overflow: hidden;
             background: radial-gradient(ellipse at 50% 0%, rgba(147, 51, 234, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 80%, rgba(124, 58, 237, 0.04) 0%, transparent 50%),
-                var(--bg-body);
+                radial-gradient(ellipse at 80% 80%, rgba(124, 58, 237, 0.04) 0%, transparent 50%), var(--bg-body);
         }
 
         .hero-canvas {
@@ -953,6 +1056,7 @@
             }
         }
 
+        /* ============================================ SECTIONS ============================================ */
         .section {
             padding: 6rem 0;
             position: relative;
@@ -1090,10 +1194,6 @@
             background: var(--primary-glow);
             border-color: var(--primary);
             color: var(--primary);
-        }
-
-        .card .btn-small i {
-            font-size: 0.8rem;
         }
 
         .grid {
@@ -1462,15 +1562,6 @@
             z-index: 1;
         }
 
-        #venue-map .leaflet-popup-content {
-            font-family: var(--font-family);
-            margin: 0;
-        }
-
-        #venue-map .leaflet-popup-content-wrapper {
-            border-radius: 8px;
-        }
-
         footer {
             background: var(--bg-surface);
             padding: 3rem 0;
@@ -1505,6 +1596,7 @@
             color: var(--primary);
         }
 
+        /* ============================================ AUTH ============================================ */
         .auth-container {
             position: fixed;
             top: 0;
@@ -1549,7 +1641,7 @@
         }
 
         .auth-card-wide {
-            max-width: 950px;
+            max-width: 980px;
         }
 
         .auth-header {
@@ -1866,6 +1958,106 @@
             color: #fff;
         }
 
+        /* Solo member card special style */
+        .solo-member-card {
+            background: linear-gradient(145deg, rgba(147, 51, 234, 0.05), var(--bg-surface));
+            border: 2px solid rgba(147, 51, 234, 0.3);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solo-member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #c084fc);
+        }
+
+        .solo-member-card .form-input {
+            margin-bottom: 1rem;
+        }
+
+        .solo-member-card label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.06em;
+        }
+
+        .solo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .solo-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* Payment dynamic display */
+        .payment-amount-highlight {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+            background: rgba(147, 51, 234, 0.1);
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            border-radius: 16px;
+            padding: 1rem 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .reg-type-banner {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(147, 51, 234, 0.08);
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin-bottom: 1.5rem;
+        }
+
+        .reg-type-banner i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .reg-type-banner span {
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .reg-type-banner .change-type-btn {
+            margin-left: auto;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .reg-type-banner .change-type-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Notifications */
         .notification-dropdown {
             position: absolute;
             top: 50px;
@@ -1983,6 +2175,7 @@
             }
         }
 
+        /* Dashboard */
         #landing-view {
             display: block;
         }
@@ -2150,6 +2343,11 @@
         .roster-badge.lead {
             background: rgba(147, 51, 234, 0.12);
             color: var(--primary);
+        }
+
+        .roster-badge.solo {
+            background: rgba(34, 197, 94, 0.12);
+            color: var(--success);
         }
 
         .creds-grid {
@@ -2500,6 +2698,7 @@
             font-weight: 600;
         }
 
+        /* ============================================ RESPONSIVE ============================================ */
         @media (max-width: 1024px) {
             .grid-3 {
                 grid-template-columns: repeat(2, 1fr);
@@ -2556,10 +2755,6 @@
                 border-radius: var(--radius-sm);
             }
 
-            .nav-links .nav-btn:hover {
-                background: var(--primary-glow);
-            }
-
             .mobile-menu-btn {
                 display: flex !important;
                 align-items: center;
@@ -2581,11 +2776,6 @@
             .subtitle {
                 font-size: 1rem;
                 margin-bottom: 2rem;
-            }
-
-            .status-pill {
-                padding: 8px 16px;
-                font-size: 0.75rem;
             }
 
             .countdown-container {
@@ -2707,6 +2897,18 @@
             .problem-modal-header h2 {
                 font-size: 1.4rem;
             }
+
+            .reg-type-container {
+                grid-template-columns: 1fr;
+            }
+
+            .solo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solo-grid-3 {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 400px) {
@@ -2754,39 +2956,26 @@
 
 <body>
 
-    <!-- Toast Notification -->
     <div id="message-box"></div>
 
-    <!-- Problem Statement Modal (UPDATED FOR MULTI-SELECT) -->
+    <!-- Problem Statement Modal -->
     <div id="problemModal" class="problem-modal" style="display: none;">
         <div class="problem-modal-content">
-            <button class="close-modal" onclick="closeProblemModal()">
-                <i class="fa-solid fa-times"></i>
-            </button>
-
+            <button class="close-modal" onclick="closeProblemModal()"><i class="fa-solid fa-times"></i></button>
             <div class="problem-modal-header">
                 <h2 id="modalThemeTitle">Select Problem Statements</h2>
-                <p>Choose up to 5 problem statements for your team to work on. Click on multiple statements to select
-                    them.</p>
-                <div class="selection-counter">
-                    Selected: <span id="selectedCount">0</span>/5
-                </div>
+                <p>Choose up to 5 problem statements for your team to work on.</p>
+                <div class="selection-counter">Selected: <span id="selectedCount">0</span>/5</div>
             </div>
-
             <div id="selectedThemeBadge" class="selected-theme-badge" style="display: none;">
                 <i class="fa-solid fa-check-circle"></i>
                 <span id="selectedThemeName"></span>
             </div>
-
-            <div id="problemList" class="problem-list">
-                <!-- Problem statements will be loaded here dynamically -->
-            </div>
-
+            <div id="problemList" class="problem-list"></div>
             <div class="modal-actions">
                 <button class="btn-secondary" onclick="closeProblemModal()">Cancel</button>
-                <button class="btn-primary" id="confirmProblemBtn" onclick="confirmProblemSelection()" disabled>
-                    Confirm Selection
-                </button>
+                <button class="btn-primary" id="confirmProblemBtn" onclick="confirmProblemSelection()" disabled>Confirm
+                    Selection</button>
             </div>
         </div>
     </div>
@@ -2798,19 +2987,16 @@
                 <img src="#" alt="TechMaster Logo" onerror="this.src='https://via.placeholder.com/36?text=TM'">
                 <span>TechMaster <span class="logo-accent">HACK</span></span>
             </div>
-
             <div class="nav-links">
                 <button class="nav-btn" onclick="switchView('landing')">Home</button>
-                <button class="nav-btn" onclick="switchView('landing', 'objectives-section')">Objectives</button>
-                <button class="nav-btn" onclick="switchView('landing', 'tracks-section')">Themes</button>
-                <button class="nav-btn" onclick="switchView('landing', 'public-docs')">Resources</button>
-                <button class="nav-btn" onclick="switchView('landing', 'schedule')">Schedule</button>
-
+                <button class="nav-btn" onclick="switchView('landing','objectives-section')">Objectives</button>
+                <button class="nav-btn" onclick="switchView('landing','tracks-section')">Themes</button>
+                <button class="nav-btn" onclick="switchView('landing','public-docs')">Resources</button>
+                <button class="nav-btn" onclick="switchView('landing','schedule')">Schedule</button>
                 <div id="dashboard-nav-item" class="hidden">
                     <button class="nav-btn" onclick="switchView('dashboard')"><i class="fa-solid fa-gauge"></i>
                         Dashboard</button>
                 </div>
-
                 <div id="notif-parent" style="position: relative;">
                     <button class="nav-btn" onclick="toggleNotifications()"><i class="fa-regular fa-bell"></i></button>
                     <span id="notif-badge" class="hidden"
@@ -2825,24 +3011,18 @@
                         </div>
                     </div>
                 </div>
-
                 <button class="nav-btn" onclick="toggleTheme()"><i class="fa-solid fa-sun" id="theme-icon"></i></button>
-
                 <div id="guest-nav" class="flex gap-2">
                     <button class="nav-btn" onclick="switchView('lead-login')">Lead Login</button>
                     <button class="nav-btn" onclick="switchView('member-hub-auth')">Member Login</button>
                 </div>
-
                 <div id="auth-nav" class="hidden items-center gap-4">
-                    <button id="nav-reg-btn" class="btn-primary hidden" onclick="switchView('register')">Register
-                        Team</button>
+                    <button id="nav-reg-btn" class="btn-primary hidden"
+                        onclick="switchView('register')">Register</button>
                     <button class="btn-secondary" onclick="logout()">Logout</button>
                 </div>
             </div>
-
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fa-solid fa-bars"></i></button>
         </div>
     </nav>
 
@@ -2855,50 +3035,30 @@
                     <span class="dot"></span>
                     <span>Registration Deadline: <span class="deadline-date">15 April 2026</span></span>
                 </div>
-
                 <h1>TechMaster INNOVATION<br><span class="gradient-text">HACKATHON 2026</span></h1>
-
                 <p class="subtitle">Empowering Future Technologies through Open Innovation</p>
-
                 <div id="countdown" class="countdown-container">
-                    <div class="countdown-item">
-                        <span id="days" class="countdown-number">00</span>
-                        <span class="countdown-label">Days</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="hours" class="countdown-number">00</span>
-                        <span class="countdown-label">Hours</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="minutes" class="countdown-number">00</span>
-                        <span class="countdown-label">Minutes</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="seconds" class="countdown-number">00</span>
-                        <span class="countdown-label">Seconds</span>
-                    </div>
+                    <div class="countdown-item"><span id="days" class="countdown-number">00</span><span
+                            class="countdown-label">Days</span></div>
+                    <div class="countdown-item"><span id="hours" class="countdown-number">00</span><span
+                            class="countdown-label">Hours</span></div>
+                    <div class="countdown-item"><span id="minutes" class="countdown-number">00</span><span
+                            class="countdown-label">Minutes</span></div>
+                    <div class="countdown-item"><span id="seconds" class="countdown-number">00</span><span
+                            class="countdown-label">Seconds</span></div>
                 </div>
-
                 <div class="hero-actions">
                     <button class="btn-primary" id="hero-action-btn" onclick="switchView('lead-login')">
                         <i class="fa-solid fa-ticket"></i> Start Registration
                     </button>
-                    <!-- WhatsApp link removed as requested -->
                 </div>
-
                 <div class="stats">
-                    <div class="stat-item">
-                        <span class="stat-number"> ₹12000 INR</span>
-                        <span class="stat-label">Prize Pool</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">Internships</span>
-                        <span class="stat-label">& Prizes</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">1 Day</span>
-                        <span class="stat-label">Challenge</span>
-                    </div>
+                    <div class="stat-item"><span class="stat-number">₹12000 INR</span><span class="stat-label">Prize
+                            Pool</span></div>
+                    <div class="stat-item"><span class="stat-number">Internships</span><span class="stat-label">&
+                            Prizes</span></div>
+                    <div class="stat-item"><span class="stat-number">1 Day</span><span
+                            class="stat-label">Challenge</span></div>
                 </div>
             </div>
         </section>
@@ -2909,11 +3069,9 @@
                     <span class="badge">LIVE</span>
                     <div class="ticker-wrap">
                         <div class="ticker-text" id="ticker-text">
-                            Registration open! &nbsp;&nbsp;|&nbsp;&nbsp;
-
-                            Final deadline: &nbsp;&nbsp;|&nbsp;&nbsp;
-
-                            Plagiarism is strictly prohibited.&nbsp;&nbsp;|&nbsp;&nbsp;
+                            Registration open! &nbsp;&nbsp;|&nbsp;&nbsp; Solo & Team registrations now available!
+                            &nbsp;&nbsp;|&nbsp;&nbsp; Final deadline: &nbsp;&nbsp;|&nbsp;&nbsp; Plagiarism is strictly
+                            prohibited.&nbsp;&nbsp;|&nbsp;&nbsp;
                         </div>
                     </div>
                     <i class="fa-solid fa-arrow-right" style="color: var(--primary); cursor: pointer;"></i>
@@ -2923,9 +3081,8 @@
 
         <div id="public-docs" class="reserved-section">
             <p>This section is reserved for public documentation and resources.</p>
-            <p>Currently under construction. GO AHEAD WITH REGISTRATION!
-                <span class="highlight">Click "Start Registration" above to begin.</span>
-            </p>
+            <p>Currently under construction. GO AHEAD WITH REGISTRATION! <span class="highlight">Click "Start
+                    Registration" above to begin.</span></p>
         </div>
 
         <section class="section" id="objectives-section">
@@ -2940,20 +3097,11 @@
                                 high-potential ideas for industry funding.</li>
                             <li><span class="check-icon"><i class="fa-solid fa-check"></i></span> Enable strong
                                 collaboration between academia & industry.</li>
-
                             <li><span class="check-icon"><i class="fa-solid fa-check"></i></span> Plagiarism is strictly
                                 prohibited.</li>
                         </ul>
                     </div>
-                    <div>
-                        <!-- <div class="info-box">
-                            <h3><i class="fa-solid fa-lightbulb"></i> Open Innovation</h3>
-                            <p>The hackathon emphasizes experimentation, inclusivity, and long-term impact with IP collaboration opportunities.</p>
-                            <a href="assets/problem_statement.pdf" target="_blank" class="btn-secondary" style="display: inline-block; margin-top: 1rem;">
-                                <i class="fa-solid fa-file-pdf"></i> View PDF
-                            </a>
-                        </div> -->
-                    </div>
+                    <div></div>
                 </div>
             </div>
         </section>
@@ -2996,7 +3144,6 @@
             </div>
         </section>
 
-
         <section class="section section-surface" id="schedule">
             <div class="container">
                 <div class="text-center" style="margin-bottom: 4rem;">
@@ -3009,8 +3156,7 @@
                             <div class="timeline-dot green"></div>
                             <div class="timeline-bar"></div>
                         </div>
-                        <div class="timeline-content">
-                            <span class="timeline-time green">09:00 - 10:00</span>
+                        <div class="timeline-content"><span class="timeline-time green">09:00 - 10:00</span>
                             <h3>Registration & Inauguration</h3>
                             <p>Check-in followed by Hackathon Briefing.</p>
                         </div>
@@ -3020,8 +3166,7 @@
                             <div class="timeline-dot"></div>
                             <div class="timeline-bar"></div>
                         </div>
-                        <div class="timeline-content">
-                            <span class="timeline-time blue">10:00 - 18:00</span>
+                        <div class="timeline-content"><span class="timeline-time blue">10:00 - 18:00</span>
                             <h3>Development & Mentoring</h3>
                             <p>Session 1 & 2. Lunch break at 13:00.</p>
                         </div>
@@ -3030,8 +3175,7 @@
                         <div class="timeline-line">
                             <div class="timeline-dot orange"></div>
                         </div>
-                        <div class="timeline-content">
-                            <span class="timeline-time orange">18:00 - 21:00</span>
+                        <div class="timeline-content"><span class="timeline-time orange">18:00 - 21:00</span>
                             <h3>Judging & Prizes</h3>
                             <p>Final presentations followed by Closing Ceremony.</p>
                         </div>
@@ -3040,28 +3184,22 @@
             </div>
         </section>
 
-        <!-- Partners Section (rectangular logos) -->
         <section class="section">
             <div class="container">
                 <div class="text-center" style="margin-bottom: 3rem;">
-                    <h2 class="section-title"> Our <span class="accent">Partners</span></h2>
+                    <h2 class="section-title">Our <span class="accent">Partners</span></h2>
                 </div>
                 <div id="hosting-partners-container" class="flex justify-center gap-8"
-                    style="flex-wrap: wrap; min-height: 100px;">
-                    <!-- Will be populated with partner cards (rectangle logo) -->
-                </div>
+                    style="flex-wrap: wrap; min-height: 100px;"></div>
             </div>
         </section>
 
-        <!-- Sponsors Section (rectangular logos) -->
         <section class="section section-surface">
             <div class="container">
                 <div class="text-center" style="margin-bottom: 3rem;">
                     <h2 class="section-title">Our <span class="accent-blue">Sponsors</span></h2>
                 </div>
-                <div id="sponsors-container">
-                    <!-- Will be populated with sponsor cards (rectangle logo) -->
-                </div>
+                <div id="sponsors-container"></div>
             </div>
         </section>
 
@@ -3072,9 +3210,7 @@
                     <p class="section-subtitle">Meet the visionaries behind TechMaster Innovation Hackathon.</p>
                 </div>
                 <div id="team-members-container" class="grid grid-4">
-                    <div class="empty-placeholder" style="grid-column: 1 / -1;">
-                        Loading our amazing team...
-                    </div>
+                    <div class="empty-placeholder" style="grid-column: 1 / -1;">Loading our amazing team...</div>
                 </div>
             </div>
         </section>
@@ -3091,8 +3227,8 @@
                                 <div class="contact-icon orange"><i class="fa-solid fa-location-dot"></i></div>
                                 <div>
                                     <h4>Location</h4>
-                                    <p>Bidar, Karnataka, India</p>
-                                    <a href="https://maps.app.goo.gl/TphfHrRhA7UkpnDD8?g_st=iw" target="_blank">View on
+                                    <p>Bidar, Karnataka, India</p><a
+                                        href="https://maps.app.goo.gl/TphfHrRhA7UkpnDD8?g_st=iw" target="_blank">View on
                                         Google Maps</a>
                                 </div>
                             </div>
@@ -3113,7 +3249,7 @@
                         </div>
                     </div>
                     <div class="map-placeholder" id="venue-map"
-                        style="height: 450px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                        style="height: 450px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                     </div>
                 </div>
             </div>
@@ -3122,14 +3258,12 @@
         <footer>
             <div class="container">
                 <div class="footer-inner">
-                    <div class="logo">
-                        <img src="#" alt="TechMaster Logo" onerror="this.src='https://via.placeholder.com/36?text=TM'">
-                        <span>TechMaster Innovation</span>
-                    </div>
+                    <div class="logo"><img src="#" alt="TechMaster Logo"
+                            onerror="this.src='https://via.placeholder.com/36?text=TM'"><span>TechMaster
+                            Innovation</span></div>
                     <div class="footer-copy">&copy; 2026 TechMaster Innovation Hackathon. All rights reserved.</div>
                     <div class="footer-socials">
                         <a href="#"><i class="fa-brands fa-github fa-lg"></i></a>
-                        <!-- WhatsApp link removed as requested -->
                         <a href="#"><i class="fa-solid fa-users fa-lg"></i></a>
                     </div>
                 </div>
@@ -3144,16 +3278,13 @@
             <div class="auth-header">
                 <div class="auth-icon orange"><i class="fa-solid fa-user-tie"></i></div>
                 <h2 class="auth-title">Lead Access<br><span class="gradient-text">Portal</span></h2>
-                <p class="auth-subtitle">Manage your team and project submissions.</p>
+                <p class="auth-subtitle">Manage your team or solo project and submissions.</p>
             </div>
-
             <button id="firebase-google-btn" class="google-btn">
                 <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google">
                 <span>Continue with Google</span>
             </button>
-
             <div class="divider">OR USE EMAIL</div>
-
             <form id="lead-email-form">
                 <div class="form-group">
                     <label class="form-label"><i class="fa-solid fa-envelope"></i> Email Address</label>
@@ -3167,12 +3298,10 @@
                     Enter Dashboard <i class="fa-solid fa-arrow-right-to-bracket"></i>
                 </button>
             </form>
-
             <div
                 style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
-                <button class="nav-btn" onclick="switchView('landing')">
-                    <i class="fa-solid fa-chevron-left"></i> Back to Main Page
-                </button>
+                <button class="nav-btn" onclick="switchView('landing')"><i class="fa-solid fa-chevron-left"></i> Back to
+                    Main Page</button>
             </div>
         </div>
     </div>
@@ -3188,15 +3317,13 @@
             <div class="info-box" style="margin-bottom: 1.5rem;">
                 <p style="color: var(--text-main); font-weight: 600; margin-bottom: 8px;">Member login is currently
                     disabled.</p>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">
-                    Please <strong>ask your Team Lead</strong> to download the certifications from their dashboard and
-                    share them with the squad.
-                </p>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Please <strong>ask your Team Lead</strong> to
+                    download the certifications from their dashboard and share them with the squad.</p>
             </div>
         </div>
     </div>
 
-    <!-- ==================== UPDATED REGISTER VIEW WITH MULTI PROBLEM SELECTION ==================== -->
+    <!-- ==================== REGISTER VIEW ==================== -->
     <div id="register-view" class="auth-container hidden">
         <div class="auth-card auth-card-wide">
             <button class="close-btn" onclick="switchView('landing')"><i class="fa-solid fa-xmark"></i></button>
@@ -3204,16 +3331,151 @@
             <div class="step-indicator">
                 <span class="step step-done">Step 1: Auth ✓</span>
                 <i class="fa-solid fa-chevron-right" style="color: var(--text-light); font-size: 0.7rem;"></i>
-                <span class="step step-active">Step 2: Team & Problems</span>
+                <span class="step step-active">Step 2: Registration</span>
             </div>
 
             <div class="auth-header">
-                <h2 class="auth-title">Finalize <span class="gradient-text">Team Registration</span></h2>
+                <h2 class="auth-title">Complete <span class="gradient-text">Registration</span></h2>
                 <p class="auth-subtitle">Lead Account: <strong id="lead-display-info">loading...</strong></p>
             </div>
 
-            <form id="register-form">
-                <!-- Team identity row -->
+            <!-- REGISTRATION TYPE SELECTION -->
+            <div id="reg-type-selection">
+                <p
+                    style="text-align: center; color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; font-weight: 600;">
+                    <i class="fa-solid fa-question-circle" style="color: var(--primary);"></i> How would you like to
+                    register?
+                </p>
+                <div class="reg-type-container">
+                    <div class="reg-type-card" id="solo-type-card" onclick="selectRegType('solo')">
+                        <div class="reg-type-check"><i class="fa-solid fa-check"></i></div>
+                        <div class="reg-type-icon"><i class="fa-solid fa-user"></i></div>
+                        <h3>Solo</h3>
+                        <p>Register as an individual participant. Work independently on your chosen problem.</p>
+                        <div class="reg-type-price">₹250 / person</div>
+                    </div>
+                    <div class="reg-type-card" id="team-type-card" onclick="selectRegType('team')">
+                        <div class="reg-type-check"><i class="fa-solid fa-check"></i></div>
+                        <div class="reg-type-icon"><i class="fa-solid fa-users"></i></div>
+                        <h3>Team</h3>
+                        <p>Register with a team of exactly 4 members. Collaborate and innovate together.</p>
+                        <div class="reg-type-price">₹1000 / team</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SOLO REGISTRATION FORM -->
+            <form id="solo-register-form" style="display: none;">
+                <div class="reg-type-banner">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Solo Registration — ₹250 per person</span>
+                    <button type="button" class="change-type-btn" onclick="resetRegType()"><i
+                            class="fa-solid fa-arrows-rotate"></i> Change</button>
+                </div>
+
+                <div class="solo-member-card">
+                    <span class="member-badge"
+                        style="background: rgba(34,197,94,0.15); color: var(--success); border-color: rgba(34,197,94,0.3);">
+                        <i class="fa-solid fa-user-circle"></i> SOLO PARTICIPANT
+                    </span>
+
+                    <div class="solo-grid">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" class="form-input" id="solo-name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" class="form-input" id="solo-email" placeholder="your@email.com"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" class="form-input" id="solo-phone" placeholder="9876543210" required>
+                        </div>
+                        <div class="form-group">
+                            <label>College / Organization *</label>
+                            <input type="text" class="form-input" id="solo-college" placeholder="Your college/org name"
+                                required>
+                        </div>
+                    </div>
+                    <div class="solo-grid-3">
+                        <div class="form-group">
+                            <label>Branch / Department *</label>
+                            <input type="text" class="form-input" id="solo-branch" placeholder="e.g., Computer Science"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>Year of Study *</label>
+                            <select class="form-select" id="solo-year" required>
+                                <option value="" disabled selected>Select Year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                                <option value="PG / Masters">PG / Masters</option>
+                                <option value="Professional">Professional</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>USN / Roll Number</label>
+                            <input type="text" class="form-input" id="solo-usn" placeholder="e.g., 1RN21CS001">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theme & Problem Selection for Solo -->
+                <div class="reg-section-title" style="grid-column: span 1;"><i class="fa-solid fa-rocket"></i> Theme &
+                    Problem Statement</div>
+                <div class="form-group">
+                    <label class="form-label">Select Theme</label>
+                    <select class="form-select" id="solo-theme" required
+                        onchange="handleThemeChange(this.value, 'solo')">
+                        <option value="" disabled selected>✨ Choose your hackathon theme</option>
+                        <option value="Intelligent Energy">Intelligent Energy & Power Systems</option>
+                        <option value="Sustainable Transport">Sustainable Transport (EV & Mobility)</option>
+                        <option value="Connected Infrastructure">Connected Infrastructure (IoT & Digital Networks)
+                        </option>
+                        <option value="Industry 5.0">Industry 5.0 (AI & Smart Automation)</option>
+                        <option value="Open Innovation">Open Innovation (General Breakthroughs)</option>
+                    </select>
+                </div>
+
+                <div id="soloSelectedProblemsContainer" class="selected-problems-container" style="display: none;">
+                    <div class="selected-problems-header">
+                        <h4><i class="fa-solid fa-check-circle" style="color: var(--primary);"></i> Selected Problem
+                            Statements</h4>
+                        <button type="button" class="change-problem-btn" onclick="openProblemModal()"><i
+                                class="fa-solid fa-pen"></i> Change</button>
+                    </div>
+                    <div id="soloSelectedProblemsList" class="selected-problems-list"></div>
+                </div>
+
+                <input type="hidden" id="soloSelectedProblemIds" value="">
+                <input type="hidden" id="soloSelectedProblemTitles" value="">
+
+                <div class="confirmation-box">
+                    <input type="checkbox" id="solo-confirm-check" required>
+                    <label for="solo-confirm-check" style="font-weight: 500;"><strong>Confirmation:</strong> I confirm
+                        that all my details and selected problem statements are correct. I understand the registration
+                        fee is ₹250.</label>
+                </div>
+
+                <button type="submit" class="btn-primary"
+                    style="width: 100%; justify-content: center; padding: 18px; font-size: 1.2rem;">
+                    Complete Solo Registration <i class="fa-regular fa-circle-check"></i>
+                </button>
+            </form>
+
+            <!-- TEAM REGISTRATION FORM -->
+            <form id="register-form" style="display: none;">
+                <div class="reg-type-banner">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Team Registration — ₹1000 per team (4 members)</span>
+                    <button type="button" class="change-type-btn" onclick="resetRegType()"><i
+                            class="fa-solid fa-arrows-rotate"></i> Change</button>
+                </div>
+
                 <div class="reg-grid" style="margin-bottom: 0.5rem;">
                     <div class="form-group">
                         <label class="form-label"><i class="fa-regular fa-flag"></i> Official Team Name</label>
@@ -3226,15 +3488,14 @@
                     </div>
                 </div>
 
-                <!-- MEMBER CARDS -->
                 <div class="reg-section-title"><i class="fa-solid fa-crown" style="color: var(--secondary);"></i> Team
-                    Lead & Members (with USN)</div>
+                    Lead & Members (4 Required)</div>
                 <div class="reg-grid">
                     <!-- Member 1 -->
                     <div class="member-card">
                         <span class="member-badge lead"><i class="fa-regular fa-star"></i> LEAD</span>
-                        <label>Full name</label>
-                        <input type="text" class="form-input" id="reg-m1-name" placeholder="Lead full name" required>
+                        <label>Full name</label><input type="text" class="form-input" id="reg-m1-name"
+                            placeholder="Lead full name" required>
                         <div class="member-row">
                             <div style="flex:1"><label>Email</label><input type="email" class="form-input"
                                     id="reg-m1-email" placeholder="lead@college.edu" required></div>
@@ -3286,29 +3547,13 @@
                         <div class="usn-input"><label>USN</label><input type="text" class="form-input" id="reg-m4-usn"
                                 placeholder="USN" required></div>
                     </div>
-                    <!-- Member 5 -->
-                    <div class="member-card">
-                        <span class="member-badge">05</span>
-                        <label>Full name</label><input type="text" class="form-input" id="reg-m5-name"
-                            placeholder="Member 5 name" required>
-                        <div class="member-row">
-                            <div><label>Email</label><input type="email" class="form-input" id="reg-m5-email"
-                                    placeholder="email" required></div>
-                            <div><label>Phone</label><input type="tel" class="form-input" id="reg-m5-phone"
-                                    placeholder="phone" required></div>
-                        </div>
-                        <div class="usn-input"><label>USN</label><input type="text" class="form-input" id="reg-m5-usn"
-                                placeholder="USN" required></div>
-                    </div>
                 </div>
 
-                <!-- Theme Selection with Problem Statements (UPDATED FOR MULTI-SELECT) -->
                 <div class="reg-section-title"><i class="fa-solid fa-rocket"></i> Problem Statements Selection</div>
-
-                <!-- Theme Select -->
                 <div class="form-group">
                     <label class="form-label">Select Theme</label>
-                    <select class="form-select" id="reg-theme" required onchange="handleThemeChange(this.value)">
+                    <select class="form-select" id="reg-theme" required
+                        onchange="handleThemeChange(this.value, 'team')">
                         <option value="" disabled selected>✨ Choose your hackathon theme</option>
                         <option value="Intelligent Energy">Intelligent Energy & Power Systems</option>
                         <option value="Sustainable Transport">Sustainable Transport (EV & Mobility)</option>
@@ -3319,40 +3564,35 @@
                     </select>
                 </div>
 
-                <!-- Selected Problem Statements Display (UPDATED) -->
                 <div id="selectedProblemsContainer" class="selected-problems-container" style="display: none;">
                     <div class="selected-problems-header">
                         <h4><i class="fa-solid fa-check-circle" style="color: var(--primary);"></i> Selected Problem
                             Statements</h4>
-                        <button type="button" class="change-problem-btn" onclick="openProblemModal()">
-                            <i class="fa-solid fa-pen"></i> Change Selection
-                        </button>
+                        <button type="button" class="change-problem-btn" onclick="openProblemModal()"><i
+                                class="fa-solid fa-pen"></i> Change Selection</button>
                     </div>
-                    <div id="selectedProblemsList" class="selected-problems-list">
-                        <!-- Selected problems will appear here -->
-                    </div>
+                    <div id="selectedProblemsList" class="selected-problems-list"></div>
                 </div>
 
-                <!-- Hidden inputs for problem statements (UPDATED) -->
                 <input type="hidden" id="selectedProblemIds" value="">
                 <input type="hidden" id="selectedProblemTitles" value="">
 
                 <div class="confirmation-box">
                     <input type="checkbox" id="confirm-check" required>
                     <label for="confirm-check" style="font-weight: 500;"><strong>Confirmation:</strong> I confirm that
-                        all names, emails, phones, USNs and the selected problem statements are correct. I understand
-                        that member login credentials will be generated after registration.</label>
+                        all names, emails, phones, USNs and the selected problem statements are correct. Team
+                        registration fee is ₹1000.</label>
                 </div>
 
                 <button type="submit" class="btn-primary"
                     style="width: 100%; justify-content: center; padding: 18px; font-size: 1.2rem;">
-                    Complete Registration <i class="fa-regular fa-circle-check"></i>
+                    Complete Team Registration <i class="fa-regular fa-circle-check"></i>
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- ==================== DASHBOARD VIEW (UPDATED) ==================== -->
+    <!-- ==================== DASHBOARD VIEW ==================== -->
     <div id="dashboard-view" class="hidden">
         <div class="dashboard-container">
             <div class="dashboard-header">
@@ -3361,47 +3601,45 @@
                     <div>
                         <h1 id="dash-team-name" class="dash-title">Loading...</h1>
                         <div>
+                            <span class="dash-track-label">Registration Type:</span>
+                            <span id="dash-reg-type" class="dash-track">--</span>
+                        </div>
+                        <div>
                             <span class="dash-track-label">Selected Theme:</span>
                             <span id="dash-theme" class="dash-track">--</span>
                         </div>
                         <div style="margin-top: 0.5rem;">
                             <span class="dash-track-label">Problem Statements:</span>
-                            <div id="dash-problems" style="margin-top: 0.25rem;">
-                                <!-- Problem statements will be loaded here -->
-                            </div>
+                            <div id="dash-problems" style="margin-top: 0.25rem;"></div>
                         </div>
                     </div>
                 </div>
-                <div id="dash-status-badge" class="status-badge badge-pending">
-                    <i class="fa-solid fa-clock"></i> Pending
+                <div id="dash-status-badge" class="status-badge badge-pending"><i class="fa-solid fa-clock"></i> Pending
                 </div>
             </div>
 
             <div class="dash-grid">
                 <div class="dash-card">
-                    <div class="dash-card-title"><i class="fa-solid fa-users"></i> Team Roster</div>
+                    <div class="dash-card-title"><i class="fa-solid fa-users"></i> Participant Roster</div>
                     <div id="team-members-list"></div>
                 </div>
-
                 <div class="dash-card" style="border-top: 3px solid var(--secondary);">
                     <div
                         style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
                         <div>
                             <div class="dash-card-title" style="margin-bottom: 0;"><i class="fa-solid fa-key"></i>
                                 Access Portal</div>
-                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Generate
-                                credentials for member login.</p>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Generate access
+                                credentials.</p>
                         </div>
                         <button id="gen-btn" onclick="generateAccessCodes()" class="btn-primary"
                             style="padding: 8px 16px; font-size: 0.75rem;">Generate</button>
                     </div>
                     <div class="creds-grid">
-                        <div class="cred-box">
-                            <span class="cred-label">Team Login Code</span>
+                        <div class="cred-box"><span class="cred-label">Login Code</span>
                             <div id="display-team-code" class="cred-value">----</div>
                         </div>
-                        <div class="cred-box">
-                            <span class="cred-label">Access Password</span>
+                        <div class="cred-box"><span class="cred-label">Access Password</span>
                             <div id="display-team-pass" class="cred-value">----</div>
                         </div>
                     </div>
@@ -3413,33 +3651,29 @@
                     <i class="fa-solid fa-credit-card"></i>
                     <div>
                         <h2>Payment & Verification</h2>
-                        <p>Complete payment to get your team verified for the hackathon.</p>
+                        <p id="dash-payment-desc">Complete payment to get verified for the hackathon.</p>
                     </div>
                 </div>
-
+                <div class="payment-amount-highlight" id="dash-payment-amount">₹---</div>
                 <div class="payment-info">
                     <h4><i class="fa-solid fa-info-circle"></i> Payment Instructions</h4>
-
                     <div class="qr-wrapper">
                         <div class="qr-box">
                             <div id="payment-qr-code" style="width: 180px; height: 180px; margin: 0 auto;"></div>
                             <div class="qr-box-label">Scan to pay via UPI</div>
                         </div>
                     </div>
-
                     <ul>
-                        <li><i class="fa-solid fa-rupee-sign"></i> <strong>Amount:</strong> &#8377;1500 per team</li>
+                        <li><i class="fa-solid fa-rupee-sign"></i> <strong>Amount:</strong> <span
+                                id="pay-amount-text">See above</span></li>
                         <li><i class="fa-solid fa-mobile-alt"></i> <strong>UPI ID:</strong> <span
                                 style="color: var(--primary); font-weight: 700;">9108950128-2@ybl</span></li>
                         <li><i class="fa-solid fa-user-tie"></i> <strong>UPI Name:</strong> Shiva Bhalke</li>
                         <li><i class="fa-solid fa-clipboard-check"></i> <strong>Verification:</strong> Submit UTR below
                         </li>
                     </ul>
-
-                    <div class="payment-note">
-                        <i class="fa-solid fa-lightbulb"></i> <strong>Note:</strong> UTR is a 12-digit reference number
-                        found in your payment receipt.
-                    </div>
+                    <div class="payment-note"><i class="fa-solid fa-lightbulb"></i> <strong>Note:</strong> UTR is a
+                        12-digit reference number found in your payment receipt.</div>
                 </div>
 
                 <div style="margin-top: 1.5rem;">
@@ -3460,20 +3694,18 @@
                                 <button type="submit" class="btn-success"
                                     style="padding: 12px 24px; white-space: nowrap;">Submit UTR</button>
                             </div>
-                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
-                                <i class="fa-solid fa-lightbulb"></i> UTR can be found in your bank transaction receipt.
-                            </p>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;"><i
+                                    class="fa-solid fa-lightbulb"></i> UTR can be found in your bank transaction
+                                receipt.</p>
                         </div>
                     </form>
                 </div>
 
                 <div id="payment-actions" class="payment-actions">
-                    <button id="submit-payment-btn" class="btn-success" onclick="showUTRForm()">
-                        <i class="fa-solid fa-money-bill-wave"></i> Submit Payment Details
-                    </button>
-                    <button class="btn-secondary" onclick="downloadPaymentReceipt()">
-                        <i class="fa-solid fa-download"></i> Download Instructions
-                    </button>
+                    <button id="submit-payment-btn" class="btn-success" onclick="showUTRForm()"><i
+                            class="fa-solid fa-money-bill-wave"></i> Submit Payment Details</button>
+                    <button class="btn-secondary" onclick="downloadPaymentReceipt()"><i
+                            class="fa-solid fa-download"></i> Download Instructions</button>
                 </div>
             </div>
 
@@ -3482,23 +3714,21 @@
                 <div class="payment-header">
                     <i class="fa-solid fa-qrcode" style="color: var(--success);"></i>
                     <div>
-                        <h2>Digital Pass<b>Entry pass</b></h2>
-                        <p>Your team is verified! Download the QR code for event entry.</p>
+                        <h2>Digital Pass <b>Entry Pass</b></h2>
+                        <p>Your registration is verified! Download the QR code for event entry.</p>
                     </div>
                 </div>
                 <div class="qr-container">
                     <div id="qr-code" class="qr-code"></div>
                     <div class="qr-details">
-                        <h4 id="qr-team-name">Team Name</h4>
-                        <p id="qr-team-code">Team Code: ---</p>
-                        <p id="qr-event-date">Event Date: March 6, 2026</p>
-                        <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 1rem;">
-                            <i class="fa-solid fa-info-circle"></i> Show this QR code at the registration desk.
-                        </p>
+                        <h4 id="qr-team-name">Name</h4>
+                        <p id="qr-team-code">Code: ---</p>
+                        <p id="qr-event-date">Event Date: March 12, 2026</p>
+                        <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 1rem;"><i
+                                class="fa-solid fa-info-circle"></i> Show this QR code at the registration desk.</p>
                     </div>
-                    <button class="btn-success" onclick="downloadQRCode()" style="margin-top: 1.5rem;">
-                        <i class="fa-solid fa-download"></i> Download QR Code
-                    </button>
+                    <button class="btn-success" onclick="downloadQRCode()" style="margin-top: 1.5rem;"><i
+                            class="fa-solid fa-download"></i> Download QR Code</button>
                 </div>
             </div>
 
@@ -3542,26 +3772,25 @@
                 <div class="payment-header">
                     <i class="fa-solid fa-award" style="color: var(--primary);"></i>
                     <div>
-                        <h2>Team Certifications</h2>
+                        <h2>Certifications</h2>
                         <p>Information about participation certificates.</p>
                     </div>
                 </div>
                 <div class="cert-placeholder">
                     <i class="fa-solid fa-certificate"></i>
                     <p>Certificates will be issued after March 9th, 2026</p>
-                    <p>If possible, certificates will be sent via email to all registered team members.</p>
+                    <p>If possible, certificates will be sent via email to all registered participants.</p>
                 </div>
             </div>
 
             <div style="text-align: center; margin: 3rem 0;">
-                <button class="btn-secondary" onclick="switchView('landing')">
-                    <i class="fa-solid fa-arrow-left"></i> Back to Landing Page
-                </button>
+                <button class="btn-secondary" onclick="switchView('landing')"><i class="fa-solid fa-arrow-left"></i>
+                    Back to Landing Page</button>
             </div>
         </div>
     </div>
 
-    <!-- ==================== NOTIFICATIONS MODAL ==================== -->
+    <!-- NOTIFICATIONS MODAL -->
     <div id="all-notifications-modal" class="modal-backdrop" style="display: none;">
         <div class="modal">
             <div class="modal-header">
@@ -3590,9 +3819,6 @@
             appId: "1:51363230854:web:4a33c8a92ebebb41b5cd07"
         };
 
-        // ============================================
-        // INITIALIZE FIREBASE
-        // ============================================
         let db, auth, storage;
         try {
             firebase.initializeApp(firebaseConfig);
@@ -3600,13 +3826,8 @@
             auth = firebase.auth();
             storage = firebase.storage();
             db.enablePersistence().catch(() => { });
-        } catch (error) {
-            console.error("Firebase initialization error:", error);
-        }
+        } catch (error) { console.error("Firebase init error:", error); }
 
-        // ============================================
-        // DATABASE COLLECTIONS
-        // ============================================
         const COLLECTIONS = {
             TEAMS: 'teams',
             USERS: 'users',
@@ -3617,9 +3838,6 @@
             PROBLEM_STATEMENTS: 'problem_statements'
         };
 
-        // ============================================
-        // GLOBAL SETTINGS
-        // ============================================
         let appSettings = {
             eventDate: 'March 6, 2026 09:00:00',
             deadlineDate: '2026-02-22',
@@ -3628,10 +3846,12 @@
             themes: []
         };
 
-        // Problem statement state (UPDATED FOR MULTI-SELECT)
+        // Problem statement state
         let currentThemeProblems = [];
-        let selectedProblemIds = new Set(); // Store multiple IDs
+        let selectedProblemIds = new Set();
         let selectedTheme = null;
+        let activeFormContext = 'team'; // 'solo' or 'team'
+        let currentRegistrationType = null; // 'solo' or 'team'
 
         // ============================================
         // AUTHENTICATION
@@ -3642,13 +3862,9 @@
             currentUser = user;
             if (user) {
                 const userDoc = await db.collection(COLLECTIONS.USERS).doc(user.uid).get();
-                if (!userDoc.exists) {
-                    await createUserRecord(user);
-                }
+                if (!userDoc.exists) await createUserRecord(user);
                 const userData = userDoc.exists ? userDoc.data() : { role: 'lead' };
                 handleAuthSuccess(userData.role || 'lead', user.email || user.phoneNumber);
-
-                // Update lead display info in registration view
                 const leadDisplay = document.getElementById('lead-display-info');
                 if (leadDisplay) leadDisplay.innerText = user.email || 'Lead';
             } else {
@@ -3659,30 +3875,55 @@
         });
 
         // ============================================
+        // REGISTRATION TYPE SELECTION
+        // ============================================
+        function selectRegType(type) {
+            currentRegistrationType = type;
+            // Update card UI
+            document.getElementById('solo-type-card').classList.toggle('active', type === 'solo');
+            document.getElementById('team-type-card').classList.toggle('active', type === 'team');
+
+            // Hide type selection, show correct form
+            document.getElementById('reg-type-selection').style.display = 'none';
+            document.getElementById('solo-register-form').style.display = type === 'solo' ? 'block' : 'none';
+            document.getElementById('register-form').style.display = type === 'team' ? 'block' : 'none';
+        }
+
+        function resetRegType() {
+            currentRegistrationType = null;
+            document.getElementById('reg-type-selection').style.display = 'block';
+            document.getElementById('solo-register-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('solo-type-card').classList.remove('active');
+            document.getElementById('team-type-card').classList.remove('active');
+            // Reset problem selections
+            selectedProblemIds.clear();
+            document.getElementById('soloSelectedProblemsContainer').style.display = 'none';
+            document.getElementById('selectedProblemsContainer').style.display = 'none';
+            document.getElementById('soloSelectedProblemIds').value = '';
+            document.getElementById('soloSelectedProblemTitles').value = '';
+            document.getElementById('selectedProblemIds').value = '';
+            document.getElementById('selectedProblemTitles').value = '';
+        }
+
+        // ============================================
         // VIEW CONTROLLER
         // ============================================
         async function switchView(v, sectionId = null) {
             const views = ['landing', 'lead-login', 'member-hub-auth', 'register', 'dashboard'];
             views.forEach(id => {
                 const el = document.getElementById(id + '-view');
-                if (el) {
-                    el.classList.add('hidden');
-                    el.style.display = '';
-                }
+                if (el) { el.classList.add('hidden'); el.style.display = ''; }
             });
             const targetEl = document.getElementById(v + '-view');
-            if (targetEl) {
-                targetEl.classList.remove('hidden');
-            }
+            if (targetEl) targetEl.classList.remove('hidden');
             if (v === 'dashboard') loadDashboardData();
             if (v === 'landing' && sectionId) {
                 setTimeout(() => {
                     const element = document.getElementById(sectionId);
                     if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }, 100);
-            } else {
-                window.scrollTo(0, 0);
-            }
+            } else { window.scrollTo(0, 0); }
         }
 
         async function handleAuthSuccess(role, identifier = "") {
@@ -3693,59 +3934,56 @@
                 try {
                     const userDoc = await db.collection(COLLECTIONS.USERS).doc(currentUser.uid).get();
                     if (userDoc.exists && userDoc.data().teamId) {
-                        notify("Welcome back, Lead!", "success");
+                        notify("Welcome back!", "success");
                         switchView('dashboard');
                     } else {
-                        notify("Access Verified. Please register your team.", "success");
+                        notify("Access Verified. Please register.", "success");
                         switchView('register');
                     }
-                } catch (e) {
-                    console.error(e);
-                    switchView('landing');
-                }
+                } catch (e) { console.error(e); switchView('landing'); }
             }
         }
 
         async function createUserRecord(user) {
             try {
                 await db.collection(COLLECTIONS.USERS).doc(user.uid).set({
-                    uid: user.uid,
-                    email: user.email || null,
-                    phoneNumber: user.phoneNumber || null,
-                    displayName: user.displayName || null,
-                    role: 'lead',
+                    uid: user.uid, email: user.email || null, phoneNumber: user.phoneNumber || null,
+                    displayName: user.displayName || null, role: 'lead',
                     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                     lastLogin: firebase.firestore.FieldValue.serverTimestamp()
                 });
-            } catch (error) {
-                console.error("Error creating user record:", error);
-            }
+            } catch (error) { console.error("Error creating user record:", error); }
         }
 
         // ============================================
-        // PROBLEM STATEMENT MODAL FUNCTIONS (UPDATED FOR MULTI-SELECT)
+        // PROBLEM STATEMENT MODAL (MULTI-SELECT)
         // ============================================
-        async function handleThemeChange(theme) {
+        async function handleThemeChange(theme, context) {
             selectedTheme = theme;
+            activeFormContext = context;
 
-            // Clear previous selections
             selectedProblemIds.clear();
-            document.getElementById('selectedProblemsContainer').style.display = 'none';
-            document.getElementById('selectedProblemIds').value = '';
-            document.getElementById('selectedProblemTitles').value = '';
             document.getElementById('selectedCount').textContent = '0';
             document.getElementById('confirmProblemBtn').disabled = true;
 
-            // Load problems for selected theme
+            if (context === 'solo') {
+                document.getElementById('soloSelectedProblemsContainer').style.display = 'none';
+                document.getElementById('soloSelectedProblemIds').value = '';
+                document.getElementById('soloSelectedProblemTitles').value = '';
+            } else {
+                document.getElementById('selectedProblemsContainer').style.display = 'none';
+                document.getElementById('selectedProblemIds').value = '';
+                document.getElementById('selectedProblemTitles').value = '';
+            }
+
             await loadProblemsForTheme(theme);
             openProblemModal();
         }
 
         async function loadProblemsForTheme(theme) {
             try {
-                const problemsRef = db.collection(COLLECTIONS.PROBLEM_STATEMENTS);
-                const snapshot = await problemsRef.where('theme', '==', theme).where('active', '==', true).get();
-
+                const snapshot = await db.collection(COLLECTIONS.PROBLEM_STATEMENTS)
+                    .where('theme', '==', theme).where('active', '==', true).get();
                 currentThemeProblems = [];
                 const problemList = document.getElementById('problemList');
 
@@ -3760,7 +3998,6 @@
                     const problem = doc.data();
                     problem.id = doc.id;
                     currentThemeProblems.push(problem);
-
                     html += `
                         <div class="problem-item" onclick="selectProblem('${doc.id}')" id="problem-${doc.id}">
                             <div class="problem-title">${problem.title}</div>
@@ -3769,154 +4006,118 @@
                                 <span><i class="fa-regular fa-clock"></i> ${problem.duration || '24 hours'}</span>
                                 <span><i class="fa-regular fa-file-lines"></i> ${problem.category || 'Technical'}</span>
                             </div>
-                        </div>
-                    `;
+                        </div>`;
                 });
-
                 problemList.innerHTML = html;
                 document.getElementById('modalThemeTitle').innerHTML = `Select Problem Statements - <span style="color: var(--primary);">${theme}</span>`;
                 document.getElementById('selectedThemeName').innerText = theme;
                 document.getElementById('selectedThemeBadge').style.display = 'inline-flex';
-
             } catch (error) {
                 console.error("Error loading problems:", error);
                 document.getElementById('problemList').innerHTML = '<div class="empty-placeholder">Error loading problem statements.</div>';
             }
         }
 
-        // UPDATED: Multi-select problem function
         function selectProblem(problemId) {
             const problemElement = document.getElementById(`problem-${problemId}`);
-
             if (selectedProblemIds.has(problemId)) {
-                // Deselect if already selected
                 problemElement.classList.remove('selected');
                 selectedProblemIds.delete(problemId);
             } else {
-                // Check if we've reached the limit of 5
-                if (selectedProblemIds.size >= 5) {
-                    notify("You can only select up to 5 problem statements", "warning");
-                    return;
-                }
-                // Select new problem
+                if (selectedProblemIds.size >= 5) { notify("You can only select up to 5 problem statements", "warning"); return; }
                 problemElement.classList.add('selected');
                 selectedProblemIds.add(problemId);
             }
-
-            // Update selection counter
             document.getElementById('selectedCount').textContent = selectedProblemIds.size;
-
-            // Enable/disable confirm button based on selection
             document.getElementById('confirmProblemBtn').disabled = selectedProblemIds.size === 0;
         }
 
-        // UPDATED: Confirm multiple problem selections
         function confirmProblemSelection() {
-            if (selectedProblemIds.size === 0) {
-                notify("Please select at least one problem statement", "error");
-                return;
-            }
-
-            // Get all selected problems
+            if (selectedProblemIds.size === 0) { notify("Please select at least one problem statement", "error"); return; }
             const selectedProblems = currentThemeProblems.filter(p => selectedProblemIds.has(p.id));
-
-            // Update display
-            const problemsList = document.getElementById('selectedProblemsList');
-            problemsList.innerHTML = selectedProblems.map((problem, index) => `
+            const problemsHTML = selectedProblems.map((problem, index) => `
                 <div class="selected-problem-item">
                     <div class="selected-problem-number">${index + 1}</div>
                     <div class="selected-problem-content">
                         <h5>${problem.title}</h5>
                         <p>${problem.description.substring(0, 100)}${problem.description.length > 100 ? '...' : ''}</p>
                     </div>
-                </div>
-            `).join('');
+                </div>`).join('');
 
-            document.getElementById('selectedProblemsContainer').style.display = 'block';
+            const idsJSON = JSON.stringify(Array.from(selectedProblemIds));
+            const titlesJSON = JSON.stringify(selectedProblems.map(p => p.title));
 
-            // Set hidden inputs with JSON strings
-            document.getElementById('selectedProblemIds').value = JSON.stringify(Array.from(selectedProblemIds));
-            document.getElementById('selectedProblemTitles').value = JSON.stringify(selectedProblems.map(p => p.title));
+            if (activeFormContext === 'solo') {
+                document.getElementById('soloSelectedProblemsList').innerHTML = problemsHTML;
+                document.getElementById('soloSelectedProblemsContainer').style.display = 'block';
+                document.getElementById('soloSelectedProblemIds').value = idsJSON;
+                document.getElementById('soloSelectedProblemTitles').value = titlesJSON;
+            } else {
+                document.getElementById('selectedProblemsList').innerHTML = problemsHTML;
+                document.getElementById('selectedProblemsContainer').style.display = 'block';
+                document.getElementById('selectedProblemIds').value = idsJSON;
+                document.getElementById('selectedProblemTitles').value = titlesJSON;
+            }
 
-            // Close modal
             closeProblemModal();
-
-            notify(`${selectedProblems.length} problem statement(s) selected successfully!`, "success");
+            notify(`${selectedProblems.length} problem statement(s) selected!`, "success");
         }
 
-        function openProblemModal() {
-            document.getElementById('problemModal').style.display = 'flex';
-        }
-
-        function closeProblemModal() {
-            document.getElementById('problemModal').style.display = 'none';
-        }
+        function openProblemModal() { document.getElementById('problemModal').style.display = 'flex'; }
+        function closeProblemModal() { document.getElementById('problemModal').style.display = 'none'; }
 
         // ============================================
-        // TEAM REGISTRATION (UPDATED WITH MULTI PROBLEM STATEMENTS)
+        // SOLO REGISTRATION
         // ============================================
-        const registerForm = document.getElementById('register-form');
-        if (registerForm) {
-            registerForm.onsubmit = async (e) => {
+        const soloRegForm = document.getElementById('solo-register-form');
+        if (soloRegForm) {
+            soloRegForm.onsubmit = async (e) => {
                 e.preventDefault();
-                if (!currentUser) {
-                    notify("Please login first", "error");
-                    switchView('lead-login');
-                    return;
-                }
+                if (!currentUser) { notify("Please login first", "error"); switchView('lead-login'); return; }
 
-                // Validate problem statements selection
-                const problemIds = document.getElementById('selectedProblemIds').value;
-                const problemTitles = document.getElementById('selectedProblemTitles').value;
+                const problemIds = document.getElementById('soloSelectedProblemIds').value;
+                const problemTitles = document.getElementById('soloSelectedProblemTitles').value;
 
-                if (!problemIds || !problemTitles) {
-                    notify("Please select problem statements for your theme", "error");
-                    return;
-                }
+                if (!problemIds || !problemTitles) { notify("Please select problem statements for your theme", "error"); return; }
 
-                // Parse the JSON strings back to arrays
                 const selectedProblemIdsArray = JSON.parse(problemIds);
                 const selectedProblemTitlesArray = JSON.parse(problemTitles);
+                if (selectedProblemIdsArray.length === 0) { notify("Please select at least one problem statement", "error"); return; }
 
-                if (selectedProblemIdsArray.length === 0) {
-                    notify("Please select at least one problem statement", "error");
-                    return;
-                }
-
-                const submitBtn = registerForm.querySelector('button[type="submit"]');
+                const submitBtn = soloRegForm.querySelector('button[type="submit"]');
                 const originalText = submitBtn.innerHTML;
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Registering...';
 
                 try {
-                    // Check if team already exists
-                    const existingTeams = await db.collection(COLLECTIONS.TEAMS)
-                        .where('leadId', '==', currentUser.uid).get();
-                    if (!existingTeams.empty) {
-                        notify("You already have a registered team!", "error");
-                        switchView('dashboard');
-                        return;
-                    }
+                    const existingTeams = await db.collection(COLLECTIONS.TEAMS).where('leadId', '==', currentUser.uid).get();
+                    if (!existingTeams.empty) { notify("You already have a registration!", "error"); switchView('dashboard'); return; }
 
-                    // Build members array with USN
-                    const members = [
-                        { name: document.getElementById('reg-m1-name').value.trim(), role: 'lead', email: document.getElementById('reg-m1-email').value.trim(), phone: document.getElementById('reg-m1-phone').value.trim(), usn: document.getElementById('reg-m1-usn').value.trim() },
-                        { name: document.getElementById('reg-m2-name').value.trim(), role: 'member', email: document.getElementById('reg-m2-email').value.trim(), phone: document.getElementById('reg-m2-phone').value.trim(), usn: document.getElementById('reg-m2-usn').value.trim() },
-                        { name: document.getElementById('reg-m3-name').value.trim(), role: 'member', email: document.getElementById('reg-m3-email').value.trim(), phone: document.getElementById('reg-m3-phone').value.trim(), usn: document.getElementById('reg-m3-usn').value.trim() },
-                        { name: document.getElementById('reg-m4-name').value.trim(), role: 'member', email: document.getElementById('reg-m4-email').value.trim(), phone: document.getElementById('reg-m4-phone').value.trim(), usn: document.getElementById('reg-m4-usn').value.trim() },
-                        { name: document.getElementById('reg-m5-name').value.trim(), role: 'member', email: document.getElementById('reg-m5-email').value.trim(), phone: document.getElementById('reg-m5-phone').value.trim(), usn: document.getElementById('reg-m5-usn').value.trim() }
-                    ];
+                    const soloName = document.getElementById('solo-name').value.trim();
+                    const soloEmail = document.getElementById('solo-email').value.trim();
+                    const soloPhone = document.getElementById('solo-phone').value.trim();
+                    const soloCollege = document.getElementById('solo-college').value.trim();
+                    const soloBranch = document.getElementById('solo-branch').value.trim();
+                    const soloYear = document.getElementById('solo-year').value;
+                    const soloUsn = document.getElementById('solo-usn').value.trim();
+
+                    const members = [{
+                        name: soloName, role: 'solo', email: soloEmail, phone: soloPhone,
+                        college: soloCollege, branch: soloBranch, year: soloYear, usn: soloUsn || 'N/A'
+                    }];
 
                     const teamData = {
-                        teamName: document.getElementById('reg-team-name').value.trim(),
-                        organization: document.getElementById('reg-org').value.trim(),
-                        theme: document.getElementById('reg-theme').value,
-                        problemIds: selectedProblemIdsArray, // Store as array
-                        problemTitles: selectedProblemTitlesArray, // Store as array
+                        teamName: soloName,
+                        organization: soloCollege,
+                        theme: document.getElementById('solo-theme').value,
+                        problemIds: selectedProblemIdsArray,
+                        problemTitles: selectedProblemTitlesArray,
                         leadId: currentUser.uid,
                         leadEmail: currentUser.email,
                         status: 'pending',
                         paymentStatus: 'pending',
+                        registrationType: 'solo',
+                        registrationFee: 250,
                         registrationDate: firebase.firestore.FieldValue.serverTimestamp(),
                         codesGenerated: false,
                         certsReleased: false,
@@ -3925,11 +4126,78 @@
                     };
 
                     const docRef = await db.collection(COLLECTIONS.TEAMS).add(teamData);
-                    await db.collection(COLLECTIONS.USERS).doc(currentUser.uid).update({
-                        teamId: docRef.id, role: 'lead'
-                    });
+                    await db.collection(COLLECTIONS.USERS).doc(currentUser.uid).update({ teamId: docRef.id, role: 'lead' });
+                    notify("Solo registration successful!", "success");
+                    setTimeout(() => switchView('dashboard'), 500);
+                } catch (error) {
+                    console.error("Solo registration error:", error);
+                    notify("Registration failed. Please try again.", "error");
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }
+            };
+        }
 
-                    notify("Team registered successfully with problem statements!", "success");
+        // ============================================
+        // TEAM REGISTRATION
+        // ============================================
+        const registerForm = document.getElementById('register-form');
+        if (registerForm) {
+            registerForm.onsubmit = async (e) => {
+                e.preventDefault();
+                if (!currentUser) { notify("Please login first", "error"); switchView('lead-login'); return; }
+
+                const problemIds = document.getElementById('selectedProblemIds').value;
+                const problemTitles = document.getElementById('selectedProblemTitles').value;
+                if (!problemIds || !problemTitles) { notify("Please select problem statements for your theme", "error"); return; }
+
+                const selectedProblemIdsArray = JSON.parse(problemIds);
+                const selectedProblemTitlesArray = JSON.parse(problemTitles);
+                if (selectedProblemIdsArray.length === 0) { notify("Please select at least one problem statement", "error"); return; }
+
+                const submitBtn = registerForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Registering...';
+
+                try {
+                    const existingTeams = await db.collection(COLLECTIONS.TEAMS).where('leadId', '==', currentUser.uid).get();
+                    if (!existingTeams.empty) { notify("You already have a registered team!", "error"); switchView('dashboard'); return; }
+
+                    const members = [
+                        { name: document.getElementById('reg-m1-name').value.trim(), role: 'lead', email: document.getElementById('reg-m1-email').value.trim(), phone: document.getElementById('reg-m1-phone').value.trim(), usn: document.getElementById('reg-m1-usn').value.trim() },
+                        { name: document.getElementById('reg-m2-name').value.trim(), role: 'member', email: document.getElementById('reg-m2-email').value.trim(), phone: document.getElementById('reg-m2-phone').value.trim(), usn: document.getElementById('reg-m2-usn').value.trim() },
+                        { name: document.getElementById('reg-m3-name').value.trim(), role: 'member', email: document.getElementById('reg-m3-email').value.trim(), phone: document.getElementById('reg-m3-phone').value.trim(), usn: document.getElementById('reg-m3-usn').value.trim() },
+                        { name: document.getElementById('reg-m4-name').value.trim(), role: 'member', email: document.getElementById('reg-m4-email').value.trim(), phone: document.getElementById('reg-m4-phone').value.trim(), usn: document.getElementById('reg-m4-usn').value.trim() }
+                    ];
+
+                    // Validate all 4 members have names
+                    for (let i = 0; i < members.length; i++) {
+                        if (!members[i].name) { notify(`Please fill in Member ${i + 1} name`, "error"); submitBtn.disabled = false; submitBtn.innerHTML = originalText; return; }
+                    }
+
+                    const teamData = {
+                        teamName: document.getElementById('reg-team-name').value.trim(),
+                        organization: document.getElementById('reg-org').value.trim(),
+                        theme: document.getElementById('reg-theme').value,
+                        problemIds: selectedProblemIdsArray,
+                        problemTitles: selectedProblemTitlesArray,
+                        leadId: currentUser.uid,
+                        leadEmail: currentUser.email,
+                        status: 'pending',
+                        paymentStatus: 'pending',
+                        registrationType: 'team',
+                        registrationFee: 1000,
+                        registrationDate: firebase.firestore.FieldValue.serverTimestamp(),
+                        codesGenerated: false,
+                        certsReleased: false,
+                        projectSubmitted: false,
+                        members: members
+                    };
+
+                    const docRef = await db.collection(COLLECTIONS.TEAMS).add(teamData);
+                    await db.collection(COLLECTIONS.USERS).doc(currentUser.uid).update({ teamId: docRef.id, role: 'lead' });
+                    notify("Team registered successfully!", "success");
                     setTimeout(() => switchView('dashboard'), 500);
                 } catch (error) {
                     console.error("Registration error:", error);
@@ -3941,54 +4209,53 @@
         }
 
         // ============================================
-        // DASHBOARD (UPDATED TO SHOW MULTIPLE PROBLEM STATEMENTS)
+        // DASHBOARD
         // ============================================
         async function loadDashboardData() {
             if (!currentUser) return;
             try {
-                const teamsSnapshot = await db.collection(COLLECTIONS.TEAMS)
-                    .where('leadId', '==', currentUser.uid).limit(1).get();
-                if (teamsSnapshot.empty) {
-                    document.getElementById('dash-team-name').textContent = "No team registered";
-                    return;
-                }
+                const teamsSnapshot = await db.collection(COLLECTIONS.TEAMS).where('leadId', '==', currentUser.uid).limit(1).get();
+                if (teamsSnapshot.empty) { document.getElementById('dash-team-name').textContent = "No registration found"; return; }
+
                 const teamDoc = teamsSnapshot.docs[0];
                 const teamData = teamDoc.data();
                 teamData.id = teamDoc.id;
 
-                document.getElementById('dash-team-name').textContent = teamData.teamName || 'Unnamed Team';
-                document.getElementById('dash-theme').textContent = teamData.theme || 'Not selected';
+                const isSolo = teamData.registrationType === 'solo';
+                const fee = teamData.registrationFee || (isSolo ? 250 : 1000);
 
-                // UPDATED: Display multiple problem statements
+                document.getElementById('dash-team-name').textContent = teamData.teamName || 'Unnamed';
+                document.getElementById('dash-reg-type').textContent = isSolo ? '👤 Solo Participant' : '👥 Team Registration';
+                document.getElementById('dash-theme').textContent = teamData.theme || 'Not selected';
+                document.getElementById('dash-payment-amount').textContent = `₹${fee}`;
+                document.getElementById('pay-amount-text').textContent = `₹${fee} per ${isSolo ? 'person' : 'team'}`;
+                document.getElementById('dash-payment-desc').textContent = `Complete payment of ₹${fee} to get verified for the hackathon.`;
+
                 const problemsContainer = document.getElementById('dash-problems');
                 if (teamData.problemTitles && teamData.problemTitles.length > 0) {
                     problemsContainer.innerHTML = teamData.problemTitles.map((title, index) => `
                         <div style="background: var(--bg-surface); padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 8px; border-left: 3px solid var(--secondary);">
                             <span style="color: var(--secondary); font-weight: 600;">${index + 1}.</span>
-                            <span style="color: var(--text-main); font-size: 0.85rem;">${title}</span>
-                        </div>
-                    `).join('');
+                            <span style="color: var(--text-main); font-size: 0.85rem;"> ${title}</span>
+                        </div>`).join('');
                 } else {
-                    problemsContainer.innerHTML = '<span class="dash-track" style="color: var(--secondary);">No problems selected</span>';
+                    problemsContainer.innerHTML = '<span class="dash-track">No problems selected</span>';
                 }
 
                 const statusBadge = document.getElementById('dash-status-badge');
-                if (statusBadge) {
-                    const status = teamData.status || 'pending';
-                    const paymentStatus = teamData.paymentStatus || 'pending';
-                    if (status === 'verified' && paymentStatus === 'verified') {
-                        statusBadge.className = 'status-badge badge-verified';
-                        statusBadge.innerHTML = '<i class="fa-solid fa-check"></i> Verified';
-                    } else if (paymentStatus === 'pending') {
-                        statusBadge.className = 'status-badge badge-pending';
-                        statusBadge.innerHTML = '<i class="fa-solid fa-clock"></i> Payment Pending';
-                    } else if (paymentStatus === 'rejected') {
-                        statusBadge.className = 'status-badge badge-rejected';
-                        statusBadge.innerHTML = '<i class="fa-solid fa-times"></i> Payment Rejected';
-                    } else {
-                        statusBadge.className = 'status-badge badge-pending';
-                        statusBadge.innerHTML = '<i class="fa-solid fa-clock"></i> Pending';
-                    }
+                const paymentStatus = teamData.paymentStatus || 'pending';
+                if (teamData.status === 'verified' && paymentStatus === 'verified') {
+                    statusBadge.className = 'status-badge badge-verified';
+                    statusBadge.innerHTML = '<i class="fa-solid fa-check"></i> Verified';
+                } else if (paymentStatus === 'pending') {
+                    statusBadge.className = 'status-badge badge-pending';
+                    statusBadge.innerHTML = '<i class="fa-solid fa-clock"></i> Payment Pending';
+                } else if (paymentStatus === 'rejected') {
+                    statusBadge.className = 'status-badge badge-rejected';
+                    statusBadge.innerHTML = '<i class="fa-solid fa-times"></i> Payment Rejected';
+                } else {
+                    statusBadge.className = 'status-badge badge-pending';
+                    statusBadge.innerHTML = '<i class="fa-solid fa-clock"></i> Pending';
                 }
 
                 const membersList = document.getElementById('team-members-list');
@@ -3998,28 +4265,23 @@
                             <div class="roster-info">
                                 <span class="roster-name">${member.name || 'Member'}</span>
                                 <span class="roster-email">${member.email || 'No email'}</span>
-                                <span class="roster-email" style="color: var(--primary);">USN: ${member.usn || 'N/A'}</span>
+                                ${member.usn && member.usn !== 'N/A' ? `<span class="roster-email" style="color: var(--primary);">USN: ${member.usn}</span>` : ''}
+                                ${isSolo && member.branch ? `<span class="roster-email">${member.branch} | ${member.year}</span>` : ''}
                             </div>
-                            <span class="roster-badge ${index === 0 ? 'lead' : ''}">${index === 0 ? 'Lead' : 'Member'}</span>
-                        </div>
-                    `).join('');
+                            <span class="roster-badge ${isSolo ? 'solo' : (index === 0 ? 'lead' : '')}">${isSolo ? 'Solo' : (index === 0 ? 'Lead' : 'Member')}</span>
+                        </div>`).join('');
                 }
 
                 if (teamData.codesGenerated) {
-                    const codeEl = document.getElementById('display-team-code');
-                    const passEl = document.getElementById('display-team-pass');
-                    if (codeEl) codeEl.innerText = teamData.teamCode || '----';
-                    if (passEl) passEl.innerText = teamData.teamPassword || "----";
+                    document.getElementById('display-team-code').innerText = teamData.teamCode || '----';
+                    document.getElementById('display-team-pass').innerText = teamData.teamPassword || '----';
                     const genBtn = document.getElementById('gen-btn');
                     if (genBtn) genBtn.style.display = 'none';
                 }
 
                 await loadPaymentStatus(teamData.id);
-                generatePaymentQRCode();
-                // Generate QR code if already verified
-                if (teamData.status === 'verified' && teamData.paymentStatus === 'verified') {
-                    generateQRCode(teamData);
-                }
+                generatePaymentQRCode(fee);
+                if (teamData.status === 'verified' && paymentStatus === 'verified') generateQRCode(teamData);
             } catch (error) {
                 console.error("Dashboard Error:", error);
                 notify("Failed to sync dashboard data", "error");
@@ -4027,25 +4289,22 @@
         }
 
         // ============================================
-        // PAYMENT SYSTEM FUNCTIONS (keep existing)
+        // PAYMENT
         // ============================================
         async function loadPaymentStatus(teamId) {
             try {
-                const paymentsSnapshot = await db.collection(COLLECTIONS.PAYMENTS)
-                    .where('teamId', '==', teamId).get();
+                const paymentsSnapshot = await db.collection(COLLECTIONS.PAYMENTS).where('teamId', '==', teamId).get();
                 if (paymentsSnapshot.empty) {
                     document.getElementById('payment-status-display').innerHTML = `
                         <div class="payment-status-row">
                             <i class="fa-solid fa-clock status-icon pending"></i>
-                            <div>
-                                <strong>No Payment Submitted</strong>
-                                <p>Please submit your payment UTR to get verified.</p>
-                            </div>
+                            <div><strong>No Payment Submitted</strong><p>Please submit your payment UTR to get verified.</p></div>
                         </div>`;
                     document.getElementById('utr-submission-form').style.display = 'block';
                     document.getElementById('submit-payment-btn').style.display = 'none';
                     return null;
                 }
+
                 let latestPayment = null, latestDate = null;
                 paymentsSnapshot.forEach(doc => {
                     const payment = doc.data();
@@ -4054,32 +4313,28 @@
                         latestDate = payment.submittedAt ? payment.submittedAt.toDate().getTime() : 0;
                     }
                 });
+
                 const payment = latestPayment;
                 let statusHTML = '', badgeClass = '';
                 switch (payment.status) {
                     case 'pending':
                         statusHTML = `<div class="payment-status-row"><i class="fa-solid fa-clock status-icon pending"></i><div><strong>Payment Under Review</strong><p>UTR: ${payment.utrNumber}<br>Submitted: ${formatDate(payment.submittedAt)}</p></div></div>`;
-                        badgeClass = 'badge-pending';
-                        break;
+                        badgeClass = 'badge-pending'; break;
                     case 'verified':
                         statusHTML = `<div class="payment-status-row"><i class="fa-solid fa-check-circle status-icon verified"></i><div><strong>Payment Verified</strong><p>UTR: ${payment.utrNumber}<br>Verified: ${formatDate(payment.verifiedAt)}</p></div></div>`;
-                        badgeClass = 'badge-verified';
-                        break;
+                        badgeClass = 'badge-verified'; break;
                     case 'rejected':
                         statusHTML = `<div class="payment-status-row"><i class="fa-solid fa-times-circle status-icon rejected"></i><div><strong>Payment Rejected</strong><p>Reason: ${payment.rejectionReason || 'Not specified'}<br>Please submit a new UTR.</p></div></div>`;
                         badgeClass = 'badge-rejected';
-                        document.getElementById('utr-submission-form').style.display = 'block';
-                        break;
+                        document.getElementById('utr-submission-form').style.display = 'block'; break;
                 }
+
                 document.getElementById('payment-status-display').innerHTML = statusHTML;
                 const badge = document.getElementById('dash-status-badge');
                 badge.className = `status-badge ${badgeClass}`;
                 badge.innerHTML = `<i class="fa-solid fa-${payment.status === 'verified' ? 'check' : payment.status === 'rejected' ? 'times' : 'clock'}"></i> ${payment.status.charAt(0).toUpperCase() + payment.status.slice(1)}`;
                 return payment;
-            } catch (error) {
-                console.error("Error loading payment status:", error);
-                return null;
-            }
+            } catch (error) { console.error("Error loading payment status:", error); return null; }
         }
 
         function showUTRForm() {
@@ -4095,15 +4350,16 @@
                 const utrNumber = document.getElementById('utr-number').value.trim();
                 if (utrNumber.length < 10) { notify("Please enter a valid UTR number (minimum 10 digits)", "error"); return; }
                 try {
-                    showLoading(true);
-                    const teamsSnapshot = await db.collection(COLLECTIONS.TEAMS)
-                        .where('leadId', '==', currentUser.uid).limit(1).get();
-                    if (teamsSnapshot.empty) { notify("Team not found", "error"); return; }
+                    const teamsSnapshot = await db.collection(COLLECTIONS.TEAMS).where('leadId', '==', currentUser.uid).limit(1).get();
+                    if (teamsSnapshot.empty) { notify("Registration not found", "error"); return; }
                     const teamDoc = teamsSnapshot.docs[0];
                     const teamId = teamDoc.id;
-                    const teamName = teamDoc.data().teamName;
+                    const teamData = teamDoc.data();
+                    const fee = teamData.registrationFee || (teamData.registrationType === 'solo' ? 250 : 1000);
+
                     await db.collection(COLLECTIONS.PAYMENTS).add({
-                        teamId, teamName, utrNumber, status: 'pending', amount: 1500, currency: 'INR',
+                        teamId, teamName: teamData.teamName, utrNumber, status: 'pending',
+                        amount: fee, currency: 'INR', registrationType: teamData.registrationType || 'team',
                         submittedBy: currentUser.uid, submittedByEmail: currentUser.email,
                         submittedAt: firebase.firestore.FieldValue.serverTimestamp(),
                         verifiedAt: null, verifiedBy: null, rejectionReason: null
@@ -4113,14 +4369,12 @@
                     });
                     document.getElementById('utr-number').value = '';
                     document.getElementById('utr-submission-form').style.display = 'none';
-                    notify("UTR submitted successfully! Admin will verify your payment soon.", "success");
+                    notify("UTR submitted successfully! Admin will verify soon.", "success");
                     loadPaymentStatus(teamId);
-                    await createAdminNotification('New Payment Submission', `Team "${teamName}" submitted UTR: ${utrNumber}`, 'payment');
+                    await createAdminNotification('New Payment Submission', `${teamData.registrationType === 'solo' ? 'Solo' : 'Team'} "${teamData.teamName}" submitted UTR: ${utrNumber} (₹${fee})`, 'payment');
                 } catch (error) {
                     console.error("Error submitting UTR:", error);
                     notify("Failed to submit UTR. Please try again.", "error");
-                } finally {
-                    showLoading(false);
                 }
             };
         }
@@ -4131,9 +4385,7 @@
                     title, message, type, isPublic: false, isAdmin: true,
                     createdAt: firebase.firestore.FieldValue.serverTimestamp(), read: false
                 });
-            } catch (error) {
-                console.error("Error creating admin notification:", error);
-            }
+            } catch (error) { console.error("Error creating admin notification:", error); }
         }
 
         function downloadPaymentReceipt() {
@@ -4143,7 +4395,8 @@ TECHMASTER INNOVATION HACKATHON 2026
 
 PAYMENT INSTRUCTIONS
 --------------------
-Amount: Rs.1500 per team
+Solo Registration: Rs.250 per person
+Team Registration: Rs.1000 per team (4 members)
 
 METHOD: UPI Payment (Preferred)
 --------------------------------
@@ -4155,26 +4408,22 @@ INSTRUCTIONS:
 2. After payment, save the transaction receipt
 3. Note the 12-digit UTR number from receipt
 4. Submit UTR in dashboard for verification
-5. If you have paid on Unstop, please submit the UTR as well.
-6. Verification takes 24-48 hours
+5. Verification takes 24-48 hours
 
-CONTACT: airfoxersmps@gmail.com
+CONTACT: techmasterstrainings@gmail.com
 
 Generated: ${new Date().toLocaleDateString()}
 `;
             const blob = new Blob([receiptContent], { type: 'text/plain' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
-            a.href = url;
-            a.download = 'TechMaster_Payment_Instructions.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
+            a.href = url; a.download = 'TechMaster_Payment_Instructions.txt';
+            document.body.appendChild(a); a.click();
+            document.body.removeChild(a); window.URL.revokeObjectURL(url);
         }
 
         // ============================================
-        // QR CODE GENERATION
+        // QR CODE
         // ============================================
         function generateQRCode(teamData) {
             const qrSection = document.getElementById('qr-section');
@@ -4185,32 +4434,26 @@ Generated: ${new Date().toLocaleDateString()}
                 if (qrContainer) qrContainer.innerHTML = '';
                 const qrData = JSON.stringify({
                     t: teamData.id.substring(0, 10), n: teamData.teamName.substring(0, 20),
-                    c: teamData.teamCode || 'N/A', e: "AF26", v: 1
+                    c: teamData.teamCode || 'N/A', r: teamData.registrationType || 'team', e: "TM26", v: 1
                 });
                 try {
                     new QRCode(qrContainer, { text: qrData, width: 200, height: 200, colorDark: "#000000", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H });
-                } catch (error) {
-                    qrContainer.innerHTML = `<div class="qr-error">QR Code Error: ${error.message}</div>`;
-                }
+                } catch (error) { qrContainer.innerHTML = `<div class="qr-error">QR Code Error: ${error.message}</div>`; }
                 document.getElementById('qr-team-name').textContent = teamData.teamName;
-                document.getElementById('qr-team-code').textContent = `Team Code: ${teamData.teamCode || 'N/A'}`;
-            } else {
-                qrSection.style.display = 'none';
-            }
+                document.getElementById('qr-team-code').textContent = `Code: ${teamData.teamCode || 'N/A'}`;
+            } else { qrSection.style.display = 'none'; }
         }
 
-        function generatePaymentQRCode() {
+        function generatePaymentQRCode(fee = 1000) {
             const qrContainer = document.getElementById('payment-qr-code');
             if (!qrContainer) return;
             qrContainer.innerHTML = '';
             try {
                 new QRCode(qrContainer, {
-                    text: "upi://pay?pa=9108950128-2@ybl&pn=ShivaBhalke&am=1500&tn=TechMasterHack2026",
+                    text: `upi://pay?pa=9108950128-2@ybl&pn=ShivaBhalke&am=${fee}&tn=TechMasterHack2026`,
                     width: 180, height: 180, colorDark: "#000000", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H
                 });
-            } catch (error) {
-                qrContainer.innerHTML = `<div class="qr-error">QR Error: ${error.message}</div>`;
-            }
+            } catch (error) { qrContainer.innerHTML = `<div class="qr-error">QR Error: ${error.message}</div>`; }
         }
 
         function downloadQRCode() {
@@ -4226,10 +4469,8 @@ Generated: ${new Date().toLocaleDateString()}
             if (!currentUser) return;
             try {
                 const genBtn = document.getElementById('gen-btn');
-                genBtn.innerText = "Generating...";
-                genBtn.disabled = true;
-                const snap = await db.collection(COLLECTIONS.TEAMS)
-                    .where('leadId', '==', currentUser.uid).get();
+                genBtn.innerText = "Generating..."; genBtn.disabled = true;
+                const snap = await db.collection(COLLECTIONS.TEAMS).where('leadId', '==', currentUser.uid).get();
                 if (snap.empty) return;
                 const teamDoc = snap.docs[0];
                 const teamName = teamDoc.data().teamName;
@@ -4244,10 +4485,9 @@ Generated: ${new Date().toLocaleDateString()}
                 genBtn.style.display = 'none';
                 notify("Credentials Generated!", "success");
             } catch (e) {
-                console.error(e);
-                notify("Failed to generate keys", "error");
-                document.getElementById('gen-btn').disabled = false;
-                document.getElementById('gen-btn').innerText = "Generate";
+                console.error(e); notify("Failed to generate keys", "error");
+                const genBtn = document.getElementById('gen-btn');
+                genBtn.disabled = false; genBtn.innerText = "Generate";
             }
         }
 
@@ -4255,18 +4495,11 @@ Generated: ${new Date().toLocaleDateString()}
             if (!currentUser) { notify("Please login first", "error"); return; }
             try {
                 const subBtn = document.getElementById('sub-btn');
-                subBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
-                subBtn.disabled = true;
+                subBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...'; subBtn.disabled = true;
                 const links = document.getElementById('sub-links').value.trim();
-                if (!links) {
-                    notify("Please enter your Google Drive link", "error");
-                    subBtn.innerHTML = '<span>Submit Project Link</span>';
-                    subBtn.disabled = false;
-                    return;
-                }
-                const teamsSnapshot = await db.collection(COLLECTIONS.TEAMS)
-                    .where('leadId', '==', currentUser.uid).limit(1).get();
-                if (teamsSnapshot.empty) { notify("Team not found", "error"); return; }
+                if (!links) { notify("Please enter your Google Drive link", "error"); subBtn.innerHTML = '<span>Submit Project Link</span>'; subBtn.disabled = false; return; }
+                const teamsSnapshot = await db.collection(COLLECTIONS.TEAMS).where('leadId', '==', currentUser.uid).limit(1).get();
+                if (teamsSnapshot.empty) { notify("Registration not found", "error"); return; }
                 const teamDoc = teamsSnapshot.docs[0];
                 await db.collection(COLLECTIONS.TEAMS).doc(teamDoc.id).update({
                     projectSubmitted: true, submissionLinks: links,
@@ -4280,12 +4513,10 @@ Generated: ${new Date().toLocaleDateString()}
                 notify("Project link submitted successfully!", "success");
                 document.getElementById('sub-links').value = '';
             } catch (error) {
-                console.error("Submission error:", error);
-                notify("Failed to submit project link", "error");
+                console.error("Submission error:", error); notify("Failed to submit project link", "error");
             } finally {
                 const subBtn = document.getElementById('sub-btn');
-                subBtn.innerHTML = '<span>Submit Project Link</span>';
-                subBtn.disabled = false;
+                subBtn.innerHTML = '<span>Submit Project Link</span>'; subBtn.disabled = false;
             }
         }
 
@@ -4299,11 +4530,7 @@ Generated: ${new Date().toLocaleDateString()}
                 const unsubscribe = db.collection(COLLECTIONS.NOTIFICATIONS)
                     .where('isPublic', '==', true).orderBy('createdAt', 'desc').limit(10)
                     .onSnapshot((snapshot) => {
-                        if (snapshot.empty) {
-                            notifList.innerHTML = '<div class="notif-item">No notifications yet</div>';
-                            updateNotificationBadge(0);
-                            return;
-                        }
+                        if (snapshot.empty) { notifList.innerHTML = '<div class="notif-item">No notifications yet</div>'; updateNotificationBadge(0); return; }
                         let html = '';
                         snapshot.forEach(doc => {
                             const n = doc.data();
@@ -4311,76 +4538,51 @@ Generated: ${new Date().toLocaleDateString()}
                         });
                         notifList.innerHTML = html;
                         updateNotificationBadge(snapshot.size);
-                    }, () => {
-                        notifList.innerHTML = '<div class="notif-item">Error loading notifications</div>';
-                    });
+                    }, () => { notifList.innerHTML = '<div class="notif-item">Error loading notifications</div>'; });
                 window.notificationUnsubscribe = unsubscribe;
-            } catch (error) {
-                console.error("Error setting up notification listener:", error);
-            }
+            } catch (error) { console.error("Error setting up notification listener:", error); }
         }
 
         function updateNotificationBadge(count) {
             const notifBadge = document.getElementById('notif-badge');
             if (!notifBadge) return;
-            if (count > 0) {
-                notifBadge.classList.remove('hidden');
-                notifBadge.textContent = count > 9 ? '9+' : count;
-            } else {
-                notifBadge.classList.add('hidden');
-            }
+            if (count > 0) { notifBadge.classList.remove('hidden'); notifBadge.textContent = count > 9 ? '9+' : count; }
+            else { notifBadge.classList.add('hidden'); }
         }
 
         // ============================================
-        // UTILITY FUNCTIONS
+        // UTILITIES
         // ============================================
-        function showLoading(show) {
-            const btn = document.querySelector('.btn-primary:disabled');
-            if (btn) {
-                btn.innerHTML = show
-                    ? '<i class="fa-solid fa-spinner fa-spin"></i> Processing...'
-                    : btn.getAttribute('data-original-text') || 'Submit';
-            }
-        }
+        function showLoading(show) { }
 
         async function logActivity(action, details) {
             try {
                 await db.collection('logs').add({
-                    action,
-                    details,
-                    userId: currentUser?.uid || 'anonymous',
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                    ip: 'web-client'
+                    action, details, userId: currentUser?.uid || 'anonymous',
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(), ip: 'web-client'
                 });
-            } catch (error) {
-                console.error("Error logging activity:", error);
-            }
+            } catch (error) { console.error("Error logging activity:", error); }
         }
 
         function formatDate(timestamp) {
             if (!timestamp) return 'N/A';
             const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-            return date.toLocaleDateString('en-US', {
-                year: 'numeric', month: 'short', day: 'numeric',
-                hour: '2-digit', minute: '2-digit'
-            });
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
         }
 
         function notify(msg, type) {
             const box = document.getElementById('message-box');
-            box.innerText = msg;
-            box.style.display = 'block';
+            box.innerText = msg; box.style.display = 'block';
             box.className = `toast toast-${type}`;
             setTimeout(() => { box.style.display = 'none'; }, 4000);
         }
 
         // ============================================
-        // LOAD LANDING PAGE DATA (Partners & Sponsors with rectangle logos)
+        // LANDING PAGE DATA
         // ============================================
         async function loadHostingPartners() {
             try {
-                const partnersSnap = await db.collection('hostingPartners')
-                    .where('active', '==', true).orderBy('order', 'asc').get();
+                const partnersSnap = await db.collection('hostingPartners').where('active', '==', true).orderBy('order', 'asc').get();
                 const container = document.getElementById('hosting-partners-container');
                 if (!container) return;
                 if (partnersSnap.empty) {
@@ -4389,23 +4591,16 @@ Generated: ${new Date().toLocaleDateString()}
                     let html = '';
                     partnersSnap.forEach(doc => {
                         const p = doc.data();
-                        html += `<div class="partner-card">
-                            <div class="partner-logo">${p.logoUrl ? `<img src="${p.logoUrl}" alt="${p.name}">` : '<i class="fas fa-building"></i>'}</div>
-                            <h3>${p.name}</h3>
-                            ${p.description ? `<p>${p.description}</p>` : ''}
-                        </div>`;
+                        html += `<div class="partner-card"><div class="partner-logo">${p.logoUrl ? `<img src="${p.logoUrl}" alt="${p.name}">` : '<i class="fas fa-building"></i>'}</div><h3>${p.name}</h3>${p.description ? `<p>${p.description}</p>` : ''}</div>`;
                     });
                     container.innerHTML = html;
                 }
-            } catch (error) {
-                console.error("Error loading hosting partners:", error);
-            }
+            } catch (error) { console.error("Error loading hosting partners:", error); }
         }
 
         async function loadSponsors() {
             try {
-                const sponsorsSnap = await db.collection('sponsors')
-                    .where('active', '==', true).orderBy('order', 'asc').get();
+                const sponsorsSnap = await db.collection('sponsors').where('active', '==', true).orderBy('order', 'asc').get();
                 const container = document.getElementById('sponsors-container');
                 if (!container) return;
                 if (sponsorsSnap.empty) {
@@ -4414,25 +4609,17 @@ Generated: ${new Date().toLocaleDateString()}
                     let html = '<div class="sponsors-grid">';
                     sponsorsSnap.forEach(doc => {
                         const s = doc.data();
-                        html += `<div class="sponsor-card">
-                            <div class="sponsor-logo">${s.logoUrl ? `<img src="${s.logoUrl}" alt="${s.name}">` : '<i class="fas fa-hand-holding-usd"></i>'}</div>
-                            <h3>${s.name}</h3>
-                            <span class="sponsor-tier">${s.tier || 'Partner'}</span>
-                            ${s.description ? `<p>${s.description}</p>` : ''}
-                        </div>`;
+                        html += `<div class="sponsor-card"><div class="sponsor-logo">${s.logoUrl ? `<img src="${s.logoUrl}" alt="${s.name}">` : '<i class="fas fa-hand-holding-usd"></i>'}</div><h3>${s.name}</h3><span class="sponsor-tier">${s.tier || 'Partner'}</span>${s.description ? `<p>${s.description}</p>` : ''}</div>`;
                     });
                     html += '</div>';
                     container.innerHTML = html;
                 }
-            } catch (error) {
-                console.error("Error loading sponsors:", error);
-            }
+            } catch (error) { console.error("Error loading sponsors:", error); }
         }
 
         async function loadTeamMembers() {
             try {
-                const membersSnap = await db.collection('teamMembers')
-                    .where('active', '==', true).orderBy('order', 'asc').get();
+                const membersSnap = await db.collection('teamMembers').where('active', '==', true).orderBy('order', 'asc').get();
                 const container = document.getElementById('team-members-container');
                 if (!container) return;
                 if (membersSnap.empty) {
@@ -4441,23 +4628,11 @@ Generated: ${new Date().toLocaleDateString()}
                     let html = '';
                     membersSnap.forEach(doc => {
                         const m = doc.data();
-                        html += `<div class="team-card">
-                            <div class="team-avatar">${m.photoURL ? `<img src="${m.photoURL}" alt="${m.name}">` : '<i class="fas fa-user"></i>'}</div>
-                            <h3>${m.name}</h3>
-                            <span class="team-role">${m.designation}</span>
-                            ${m.bio ? `<p class="team-bio">${m.bio}</p>` : ''}
-                            <div class="team-socials">
-                                ${m.linkedin ? `<a href="${m.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>` : ''}
-                                ${m.twitter ? `<a href="${m.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>` : ''}
-                                ${m.github ? `<a href="${m.github}" target="_blank"><i class="fab fa-github"></i></a>` : ''}
-                            </div>
-                        </div>`;
+                        html += `<div class="team-card"><div class="team-avatar">${m.photoURL ? `<img src="${m.photoURL}" alt="${m.name}">` : '<i class="fas fa-user"></i>'}</div><h3>${m.name}</h3><span class="team-role">${m.designation}</span>${m.bio ? `<p class="team-bio">${m.bio}</p>` : ''}<div class="team-socials">${m.linkedin ? `<a href="${m.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>` : ''}${m.github ? `<a href="${m.github}" target="_blank"><i class="fab fa-github"></i></a>` : ''}</div></div>`;
                     });
                     container.innerHTML = html;
                 }
-            } catch (error) {
-                console.error("Error loading team members:", error);
-            }
+            } catch (error) { console.error("Error loading team members:", error); }
         }
 
         // ============================================
@@ -4472,12 +4647,9 @@ Generated: ${new Date().toLocaleDateString()}
                     if (data.deadlineDate) appSettings.deadlineDate = data.deadlineDate;
                     if (data.maxTeams) appSettings.maxTeams = data.maxTeams;
                     if (data.registrationOpen !== undefined) appSettings.registrationOpen = data.registrationOpen;
-                    if (data.themes) appSettings.themes = data.themes;
                     updateRegistrationDeadline();
                 }
-            } catch (error) {
-                console.error("Error loading settings:", error);
-            }
+            } catch (error) { console.error("Error loading settings:", error); }
         }
 
         function updateRegistrationDeadline() {
@@ -4500,21 +4672,14 @@ Generated: ${new Date().toLocaleDateString()}
             const dashboardNav = document.getElementById('dashboard-nav-item');
             if (currentUser) {
                 guest.classList.add('hidden');
-                authNav.classList.remove('hidden');
-                authNav.classList.add('flex');
+                authNav.classList.remove('hidden'); authNav.classList.add('flex');
                 if (role === 'lead') {
-                    regBtn.classList.remove('hidden');
-                    dashboardNav.classList.remove('hidden');
-                    if (heroBtn) { heroBtn.innerText = "Register Your Team Now"; heroBtn.onclick = () => switchView('register'); }
-                } else if (role === 'member') {
-                    regBtn.classList.add('hidden');
-                    dashboardNav.classList.remove('hidden');
-                    if (heroBtn) { heroBtn.innerText = "Go to Dashboard"; heroBtn.onclick = () => switchView('dashboard'); }
+                    regBtn.classList.remove('hidden'); dashboardNav.classList.remove('hidden');
+                    if (heroBtn) { heroBtn.innerText = "Register Now"; heroBtn.onclick = () => switchView('register'); }
                 }
             } else {
                 guest.classList.remove('hidden');
-                authNav.classList.add('hidden');
-                authNav.classList.remove('flex');
+                authNav.classList.add('hidden'); authNav.classList.remove('flex');
                 dashboardNav.classList.add('hidden');
                 if (heroBtn) { heroBtn.innerText = "Start Registration"; heroBtn.onclick = () => switchView('lead-login'); }
             }
@@ -4522,28 +4687,21 @@ Generated: ${new Date().toLocaleDateString()}
 
         function logout() {
             auth.signOut();
-            localStorage.removeItem('userRole');
-            localStorage.removeItem('userIdentifier');
-            currentUser = null;
-            updateAuthUI();
+            localStorage.removeItem('userRole'); localStorage.removeItem('userIdentifier');
+            currentUser = null; updateAuthUI();
             notify("Logged out successfully", "info");
             switchView('landing');
         }
 
         function startCountdown() {
             let targetDateString = appSettings.eventDate;
-            if (targetDateString && targetDateString.length === 10) {
-                targetDateString = `${targetDateString} 09:00:00`;
-            }
+            if (targetDateString && targetDateString.length === 10) targetDateString = `${targetDateString} 09:00:00`;
             const targetDate = new Date(targetDateString).getTime();
             function update() {
                 const now = new Date().getTime();
                 const distance = targetDate - now;
                 if (distance < 0) {
-                    document.getElementById('days').textContent = '00';
-                    document.getElementById('hours').textContent = '00';
-                    document.getElementById('minutes').textContent = '00';
-                    document.getElementById('seconds').textContent = '00';
+                    ['days', 'hours', 'minutes', 'seconds'].forEach(id => document.getElementById(id).textContent = '00');
                     return;
                 }
                 document.getElementById('days').textContent = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
@@ -4551,8 +4709,7 @@ Generated: ${new Date().toLocaleDateString()}
                 document.getElementById('minutes').textContent = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
                 document.getElementById('seconds').textContent = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
             }
-            update();
-            setInterval(update, 1000);
+            update(); setInterval(update, 1000);
         }
 
         function toggleNotifications() {
@@ -4560,70 +4717,47 @@ Generated: ${new Date().toLocaleDateString()}
             document.getElementById('notif-badge').classList.add('hidden');
         }
 
-        function clearNotifs() {
-            document.getElementById('notif-list').innerHTML = '<div class="notif-item">No notifications</div>';
-            notify("Cleared", "info");
-        }
+        function clearNotifs() { document.getElementById('notif-list').innerHTML = '<div class="notif-item">No notifications</div>'; notify("Cleared", "info"); }
 
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
             const icon = document.getElementById('theme-icon');
-            if (document.body.classList.contains('light-mode')) {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
-            } else {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-            }
+            if (document.body.classList.contains('light-mode')) { icon.classList.replace('fa-sun', 'fa-moon'); localStorage.setItem('theme', 'light'); }
+            else { icon.classList.replace('fa-moon', 'fa-sun'); localStorage.setItem('theme', 'dark'); }
         }
 
         function toggleMobileMenu() {
             const navLinks = document.querySelector('.nav-links');
             const mobileBtn = document.querySelector('.mobile-menu-btn i');
             navLinks.classList.toggle('mobile-open');
-            if (navLinks.classList.contains('mobile-open')) {
-                mobileBtn.classList.replace('fa-bars', 'fa-xmark');
-            } else {
-                mobileBtn.classList.replace('fa-xmark', 'fa-bars');
-            }
+            if (navLinks.classList.contains('mobile-open')) mobileBtn.classList.replace('fa-bars', 'fa-xmark');
+            else mobileBtn.classList.replace('fa-xmark', 'fa-bars');
         }
 
-        function closeAllNotificationsModal() {
-            document.getElementById('all-notifications-modal').style.display = 'none';
-        }
+        function closeAllNotificationsModal() { document.getElementById('all-notifications-modal').style.display = 'none'; }
 
-        // Scroll handler for navbar
         window.onscroll = () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
+            if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
         };
 
-        // Close dropdown on outside click
         window.addEventListener('click', (e) => {
             const parent = document.getElementById('notif-parent');
             const dd = document.getElementById('notification-dropdown');
             if (parent && !parent.contains(e.target)) dd.classList.remove('active');
         });
 
-        // Close mobile menu on link click
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('nav-btn') || e.target.closest('.nav-btn')) {
                 const navLinks = document.querySelector('.nav-links');
-                if (navLinks.classList.contains('mobile-open')) {
-                    toggleMobileMenu();
-                }
+                if (navLinks.classList.contains('mobile-open')) toggleMobileMenu();
             }
         });
 
-        // Right click disable
-        document.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-            return false;
-        });
+        document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; });
 
         // ============================================
-        // PARTICLES BACKGROUND ANIMATION
+        // PARTICLES
         // ============================================
         function initParticles() {
             const canvas = document.getElementById('particle-canvas');
@@ -4631,120 +4765,45 @@ Generated: ${new Date().toLocaleDateString()}
             const ctx = canvas.getContext('2d');
             let particles = [];
             const particleCount = 60;
-
-            function resize() {
-                canvas.width = canvas.parentElement.offsetWidth;
-                canvas.height = canvas.parentElement.offsetHeight;
-            }
-            resize();
-            window.addEventListener('resize', resize);
-
+            function resize() { canvas.width = canvas.parentElement.offsetWidth; canvas.height = canvas.parentElement.offsetHeight; }
+            resize(); window.addEventListener('resize', resize);
             class Particle {
-                constructor() {
-                    this.reset();
-                }
-                reset() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.vx = (Math.random() - 0.5) * 0.5;
-                    this.vy = (Math.random() - 0.5) * 0.5;
-                    this.radius = Math.random() * 2 + 0.5;
-                    this.opacity = Math.random() * 0.5 + 0.1;
-                }
-                update() {
-                    this.x += this.vx;
-                    this.y += this.vy;
-                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(147, 51, 234, ${this.opacity})`;
-                    ctx.fill();
-                }
+                constructor() { this.reset(); }
+                reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.5; this.vy = (Math.random() - 0.5) * 0.5; this.radius = Math.random() * 2 + 0.5; this.opacity = Math.random() * 0.5 + 0.1; }
+                update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
+                draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = `rgba(147,51,234,${this.opacity})`; ctx.fill(); }
             }
-
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-
+            for (let i = 0; i < particleCount; i++) particles.push(new Particle());
             function connectParticles() {
                 for (let i = 0; i < particles.length; i++) {
                     for (let j = i + 1; j < particles.length; j++) {
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
+                        const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
                         const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 150) {
-                            ctx.beginPath();
-                            ctx.strokeStyle = `rgba(147, 51, 234, ${0.08 * (1 - dist / 150)})`;
-                            ctx.lineWidth = 0.5;
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.stroke();
-                        }
+                        if (dist < 150) { ctx.beginPath(); ctx.strokeStyle = `rgba(147,51,234,${0.08 * (1 - dist / 150)})`; ctx.lineWidth = 0.5; ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke(); }
                     }
                 }
             }
-
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => { p.update(); p.draw(); });
-                connectParticles();
-                requestAnimationFrame(animate);
-            }
+            function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); connectParticles(); requestAnimationFrame(animate); }
             animate();
         }
 
         // ============================================
-        // VENUE MAP INITIALIZATION (UPDATED TO BIDAR)
+        // VENUE MAP
         // ============================================
         function initVenueMap() {
             const mapContainer = document.getElementById('venue-map');
             if (!mapContainer) return;
-
-            // Bidar coordinates (Karnataka, India)
             const venueCoordinates = [17.9145, 77.5306];
-            const venueAddress = "Bidar, Karnataka, India";
-
-            // Initialize map
             const map = L.map('venue-map').setView(venueCoordinates, 13);
-
-            // Add OpenStreetMap tiles
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors',
-                maxZoom: 19,
-                minZoom: 10
-            }).addTo(map);
-
-            // Add marker with popup
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors', maxZoom: 19, minZoom: 10 }).addTo(map);
             const marker = L.marker(venueCoordinates).addTo(map);
-            marker.bindPopup(`
-                <div style="font-family: var(--font-family); max-width: 250px;">
-                    <h4 style="margin: 0 0 8px 0; color: #9333ea;">TechMaster Hackathon Venue</h4>
-                    <p style="margin: 0 0 12px 0; font-size: 0.875rem; line-height: 1.5;">
-                        ${venueAddress}
-                    </p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=17.9145,77.5306" target="_blank" style="color: #9333ea; text-decoration: none; font-weight: 500;">
-                        <i class="fa-solid fa-directions"></i> Directions
-                    </a>
-                </div>
-            `, { maxWidth: 300 });
-
+            marker.bindPopup(`<div style="font-family: var(--font-family); max-width: 250px;"><h4 style="margin: 0 0 8px 0; color: #9333ea;">TechMaster Hackathon Venue</h4><p style="margin: 0 0 12px 0; font-size: 0.875rem;">Bidar, Karnataka, India</p><a href="https://www.google.com/maps/search/?api=1&query=17.9145,77.5306" target="_blank" style="color: #9333ea; text-decoration: none; font-weight: 500;">Directions</a></div>`, { maxWidth: 300 });
             marker.openPopup();
-
-            // Add circle to show venue area
-            L.circle(venueCoordinates, {
-                color: '#9333ea',
-                fillColor: '#9333ea',
-                fillOpacity: 0.1,
-                radius: 2000,
-                weight: 2
-            }).addTo(map);
+            L.circle(venueCoordinates, { color: '#9333ea', fillColor: '#9333ea', fillOpacity: 0.1, radius: 2000, weight: 2 }).addTo(map);
         }
 
         // ============================================
-        // AUTH: EMAIL/PASSWORD LOGIN
+        // AUTH
         // ============================================
         const leadEmailForm = document.getElementById('lead-email-form');
         if (leadEmailForm) {
@@ -4752,12 +4811,8 @@ Generated: ${new Date().toLocaleDateString()}
                 e.preventDefault();
                 const email = document.getElementById('lead-email').value.trim();
                 const password = document.getElementById('lead-pass').value;
-                if (!email || !password) {
-                    notify("Please enter both email and password", "error");
-                    return;
-                }
+                if (!email || !password) { notify("Please enter both email and password", "error"); return; }
                 try {
-                    showLoading(true);
                     await auth.signInWithEmailAndPassword(email, password);
                     await logActivity('LEAD_LOGIN', `Lead logged in: ${email}`);
                 } catch (error) {
@@ -4767,22 +4822,16 @@ Generated: ${new Date().toLocaleDateString()}
                     else if (error.code === 'auth/invalid-email') message = "Invalid email format";
                     else if (error.code === 'auth/too-many-requests') message = "Too many attempts. Try again later.";
                     notify(message, "error");
-                } finally {
-                    showLoading(false);
                 }
             };
         }
 
-        // ============================================
-        // AUTH: GOOGLE SIGN IN
-        // ============================================
         const googleBtn = document.getElementById('firebase-google-btn');
         if (googleBtn) {
             googleBtn.onclick = async function () {
                 try {
                     const provider = new firebase.auth.GoogleAuthProvider();
-                    provider.addScope('email');
-                    provider.addScope('profile');
+                    provider.addScope('email'); provider.addScope('profile');
                     const result = await auth.signInWithPopup(provider);
                     notify(`Welcome ${result.user.displayName || result.user.email}!`, "success");
                     handleAuthSuccess('lead', result.user.email);
@@ -4796,14 +4845,11 @@ Generated: ${new Date().toLocaleDateString()}
         }
 
         // ============================================
-        // INITIALIZE ON LOAD
+        // INITIALIZE
         // ============================================
         document.addEventListener('DOMContentLoaded', async () => {
             const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
-                document.body.classList.add('light-mode');
-                document.getElementById('theme-icon').classList.replace('fa-sun', 'fa-moon');
-            }
+            if (savedTheme === 'light') { document.body.classList.add('light-mode'); document.getElementById('theme-icon').classList.replace('fa-sun', 'fa-moon'); }
             updateAuthUI();
             await loadSettings();
             loadTeamMembers();
@@ -4813,9 +4859,7 @@ Generated: ${new Date().toLocaleDateString()}
             startCountdown();
             loadUserNotifications();
             initParticles();
-            window.addEventListener('beforeunload', () => {
-                if (window.notificationUnsubscribe) window.notificationUnsubscribe();
-            });
+            window.addEventListener('beforeunload', () => { if (window.notificationUnsubscribe) window.notificationUnsubscribe(); });
         });
     </script>
 </body>
