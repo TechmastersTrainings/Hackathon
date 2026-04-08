@@ -20,7 +20,6 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
     <style>
-        /* ========== RESET & VARIABLES ========== */
         * {
             margin: 0;
             padding: 0;
@@ -38,16 +37,12 @@
             --secondary: #7c3aed;
             --text-main: #f0f0f0;
             --text-muted: #888888;
-            --text-light: #666666;
             --border: rgba(255, 255, 255, 0.08);
             --border-hover: rgba(147, 51, 234, 0.3);
             --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-            --shadow-glow: 0 0 40px rgba(147, 51, 234, 0.08);
-            --nav-bg: rgba(10, 10, 10, 0.9);
             --success: #22c55e;
             --error: #ef4444;
             --warning: #f59e0b;
-            --info: #3b82f6;
             --radius: 12px;
             --radius-sm: 8px;
             --radius-full: 999px;
@@ -61,23 +56,17 @@
             --bg-input: #f0f0f0;
             --text-main: #111111;
             --text-muted: #666666;
-            --text-light: #999999;
             --border: rgba(0, 0, 0, 0.1);
-            --border-hover: rgba(147, 51, 234, 0.4);
-            --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-            --nav-bg: rgba(255, 255, 255, 0.95);
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
-            overflow-x: hidden;
             line-height: 1.5;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
-        /* ========== UTILITY CLASSES ========== */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -90,10 +79,6 @@
 
         .flex {
             display: flex;
-        }
-
-        .flex-col {
-            flex-direction: column;
         }
 
         .items-center {
@@ -116,10 +101,6 @@
             gap: 12px;
         }
 
-        .gap-6 {
-            gap: 18px;
-        }
-
         .text-center {
             text-align: center;
         }
@@ -128,34 +109,7 @@
             width: 100%;
         }
 
-        /* ========== ANIMATIONS ========== */
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.4);
-            }
-
-            70% {
-                box-shadow: 0 0 0 10px rgba(147, 51, 234, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(147, 51, 234, 0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        /* ========== NAVIGATION (COMPACT) ========== */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -208,7 +162,7 @@
             background: var(--primary-glow);
         }
 
-        /* ========== BUTTONS (COMPACT) ========== */
+        /* Buttons */
         .btn-primary {
             background: var(--primary);
             color: #fff;
@@ -217,9 +171,6 @@
             border: none;
             font-weight: 600;
             font-size: 0.8rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
             cursor: pointer;
             transition: all var(--transition);
         }
@@ -238,7 +189,6 @@
             font-weight: 500;
             font-size: 0.8rem;
             cursor: pointer;
-            transition: all var(--transition);
         }
 
         .btn-secondary:hover {
@@ -258,7 +208,7 @@
             cursor: pointer;
         }
 
-        /* ========== HERO SECTION (COMPACT) ========== */
+        /* Hero */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -272,16 +222,13 @@
         .hero h1 {
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 900;
-            line-height: 1.1;
             margin-bottom: 0.75rem;
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, var(--primary), #c084fc, var(--primary));
-            background-size: 200% auto;
+            background: linear-gradient(135deg, var(--primary), #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .hero .subtitle {
@@ -311,6 +258,20 @@
             animation: pulse 2s infinite;
         }
 
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(147, 51, 234, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(147, 51, 234, 0);
+            }
+        }
+
         .stat-number {
             font-size: 1.5rem;
             font-weight: 900;
@@ -322,7 +283,7 @@
             color: var(--text-muted);
         }
 
-        /* ========== THEME CARDS (COMPACT) ========== */
+        /* Theme Cards */
         .section {
             padding: 3rem 0;
         }
@@ -361,7 +322,6 @@
         .theme-card:hover {
             transform: translateY(-3px);
             border-color: var(--primary);
-            box-shadow: var(--shadow-glow);
         }
 
         .theme-icon {
@@ -388,7 +348,7 @@
             color: var(--text-muted);
         }
 
-        /* ========== AUTH MODALS (COMPACT) ========== */
+        /* Auth Modals */
         .auth-container {
             position: fixed;
             top: 0;
@@ -413,7 +373,6 @@
             width: 100%;
             max-width: 480px;
             position: relative;
-            box-shadow: var(--shadow);
         }
 
         .auth-card-wide {
@@ -434,7 +393,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all var(--transition);
             color: var(--text-muted);
             font-size: 0.8rem;
         }
@@ -458,19 +416,9 @@
             font-size: 0.8rem;
         }
 
-        /* ========== FORMS (COMPACT) ========== */
+        /* Forms */
         .form-group {
             margin-bottom: 0.75rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.3rem;
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .form-input,
@@ -482,7 +430,6 @@
             border-radius: 10px;
             color: var(--text-main);
             font-size: 0.8rem;
-            transition: all var(--transition);
             outline: none;
         }
 
@@ -492,7 +439,7 @@
             box-shadow: 0 0 0 2px var(--primary-glow);
         }
 
-        /* ========== REGISTRATION TYPE (COMPACT) ========== */
+        /* Registration Type */
         .reg-type-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -507,7 +454,6 @@
             padding: 1.2rem 1rem;
             text-align: center;
             cursor: pointer;
-            transition: all var(--transition);
             position: relative;
         }
 
@@ -548,7 +494,6 @@
         .reg-type-card h3 {
             font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 0.15rem;
         }
 
         .reg-type-card p {
@@ -567,7 +512,7 @@
             margin-top: 0.5rem;
         }
 
-        /* ========== INFO BANNER (COMPACT) ========== */
+        /* Info Banner */
         .info-banner {
             background: linear-gradient(135deg, rgba(147, 51, 234, 0.08), rgba(124, 58, 237, 0.05));
             border-left: 3px solid var(--primary);
@@ -588,16 +533,14 @@
             font-size: 0.75rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 0.1rem;
         }
 
         .info-banner-content p {
             font-size: 0.7rem;
             color: var(--text-muted);
-            margin: 0;
         }
 
-        /* ========== TEAM REGISTRATION - COMPACT 2 COLUMN ========== */
+        /* Team Registration - 2 Column */
         .team-members-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -609,11 +552,6 @@
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 1rem;
-            transition: all var(--transition);
-        }
-
-        .member-card:hover {
-            border-color: var(--border-hover);
         }
 
         .member-badge {
@@ -638,10 +576,6 @@
             font-size: 0.75rem;
         }
 
-        .member-card .form-input:last-of-type {
-            margin-bottom: 0;
-        }
-
         .team-info-row {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -657,7 +591,6 @@
             align-items: center;
             gap: 0.75rem;
             margin: 1rem 0;
-            border: 1px solid rgba(147, 51, 234, 0.15);
             font-size: 0.75rem;
         }
 
@@ -667,7 +600,7 @@
             accent-color: var(--primary);
         }
 
-        /* Solo Registration Form (Compact) */
+        /* Solo Form */
         .solo-member-card {
             background: linear-gradient(145deg, var(--bg-surface), var(--bg-card));
             border: 1px solid var(--border);
@@ -689,9 +622,10 @@
         .solo-member-card .form-select {
             padding: 7px 10px;
             font-size: 0.75rem;
+            margin-bottom: 0;
         }
 
-        /* ========== DASHBOARD (COMPACT) ========== */
+        /* Dashboard */
         .dashboard-container {
             max-width: 1300px;
             margin: 80px auto 0;
@@ -831,11 +765,12 @@
             color: var(--primary);
         }
 
+        /* Payment Card - WITH FULL DETAILS */
         .payment-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 1rem;
+            padding: 1.25rem;
             margin-bottom: 1rem;
         }
 
@@ -843,16 +778,19 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
         }
 
         .payment-header i {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: var(--primary);
         }
 
         .payment-header h3 {
             font-size: 1rem;
+            font-weight: 700;
         }
 
         .payment-header p {
@@ -861,41 +799,105 @@
         }
 
         .payment-amount-highlight {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 900;
             color: var(--primary);
             background: rgba(147, 51, 234, 0.1);
-            padding: 0.6rem;
+            padding: 0.75rem;
             text-align: center;
             border-radius: 12px;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Payment Details Grid - QR + Info Side by Side */
+        .payment-details-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1rem;
         }
 
         .qr-wrapper {
             text-align: center;
-            margin: 0.75rem 0;
         }
 
         .qr-box {
-            display: inline-block;
             background: white;
-            padding: 8px;
+            padding: 10px;
             border-radius: 12px;
+            display: inline-block;
         }
 
-        .payment-info ul {
-            list-style: none;
-            margin-top: 0.75rem;
+        .qr-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            text-align: center;
         }
 
-        .payment-info li {
-            margin-bottom: 0.3rem;
+        .payment-info-details {
+            background: var(--bg-surface);
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .payment-info-details h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.7rem;
-            padding: 4px 0;
+        }
+
+        .payment-info-details ul {
+            list-style: none;
+        }
+
+        .payment-info-details li {
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            padding: 6px 0;
             border-bottom: 1px solid var(--border);
+        }
+
+        .payment-info-details li i {
+            width: 20px;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .payment-info-details li strong {
+            color: var(--text-main);
+            min-width: 70px;
+        }
+
+        .payment-info-details li span {
+            color: var(--text-muted);
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        .payment-note {
+            background: rgba(147, 51, 234, 0.08);
+            padding: 0.75rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            margin-top: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .payment-note i {
+            color: var(--primary);
+            font-size: 0.9rem;
         }
 
         .utr-input-group {
@@ -904,9 +906,16 @@
             margin-top: 0.5rem;
         }
 
+        .payment-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
         .qr-code {
-            width: 150px;
-            height: 150px;
+            width: 130px;
+            height: 130px;
             margin: 0 auto;
         }
 
@@ -921,7 +930,7 @@
             min-height: 80px;
         }
 
-        /* ========== TOAST NOTIFICATIONS ========== */
+        /* Toast */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -933,7 +942,6 @@
             font-size: 0.8rem;
             z-index: 99999;
             animation: slideIn 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             max-width: 350px;
         }
 
@@ -949,7 +957,19 @@
             background: var(--info);
         }
 
-        /* ========== RESPONSIVE ========== */
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
         @media (max-width: 900px) {
             .team-members-grid {
                 grid-template-columns: 1fr;
@@ -975,31 +995,20 @@
                 grid-template-columns: 1fr;
             }
 
+            .payment-details-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .payment-info-details li {
+                justify-content: center;
+                flex-wrap: wrap;
+                text-align: left;
+            }
+
             .utr-input-group {
                 flex-direction: column;
             }
-
-            .auth-card-wide {
-                padding: 1rem;
-                margin: 0.5rem;
-            }
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-body);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 3px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
         }
     </style>
 </head>
@@ -1032,10 +1041,8 @@
     <div id="landing-view">
         <div class="hero">
             <div class="container">
-                <div class="status-pill">
-                    <span class="status-dot"></span>
-                    <span>Registration Open | Theme Selection Only</span>
-                </div>
+                <div class="status-pill"><span class="status-dot"></span><span>Registration Open | Theme Selection
+                        Only</span></div>
                 <h1>TechMaster <span class="gradient-text">INNOVATION</span><br>HACKATHON 2026</h1>
                 <p class="subtitle">Pick your innovation theme. Problem statements will be released on <strong>April
                         10th at 12:00 AM</strong>.</p>
@@ -1062,7 +1069,7 @@
             <div class="container">
                 <h2 class="section-title">Select Your <span style="color: var(--primary);">Innovation Theme</span></h2>
                 <p class="section-subtitle">Choose the track that aligns with your vision</p>
-                <div class="theme-grid" id="landing-themes-grid">
+                <div class="theme-grid">
                     <div class="theme-card" data-theme="Intelligent Energy">
                         <div class="theme-icon"><i class="fa-solid fa-bolt"></i></div>
                         <h3>Intelligent Energy</h3>
@@ -1117,7 +1124,7 @@
         </div>
     </div>
 
-    <!-- Register View - COMPACT -->
+    <!-- Register View -->
     <div id="register-view" class="auth-container hidden">
         <div class="auth-card auth-card-wide">
             <button class="close-btn" onclick="switchView('landing')"><i class="fa-solid fa-xmark"></i></button>
@@ -1143,7 +1150,7 @@
                 </div>
             </div>
 
-            <!-- Solo Form (Compact) -->
+            <!-- Solo Form -->
             <form id="solo-form" style="display:none">
                 <div class="info-banner"><i class="fa-regular fa-calendar-alt"></i>
                     <div class="info-banner-content">
@@ -1181,7 +1188,7 @@
                 <button type="submit" class="btn-primary w-100">Complete Solo Registration</button>
             </form>
 
-            <!-- Team Form - COMPACT 2 COLUMN -->
+            <!-- Team Form - 2 Column -->
             <form id="team-form" style="display:none">
                 <div class="info-banner"><i class="fa-regular fa-calendar-alt"></i>
                     <div class="info-banner-content">
@@ -1189,7 +1196,6 @@
                         <p>Released on <strong>April 10th at 12:00 AM</strong></p>
                     </div>
                 </div>
-
                 <div class="form-group"><select id="team-theme" class="form-select" required>
                         <option value="">Select Theme *</option>
                         <option value="Intelligent Energy">Intelligent Energy</option>
@@ -1198,44 +1204,31 @@
                         <option value="Industry 5.0">Industry 5.0</option>
                         <option value="Open Innovation">Open Innovation</option>
                     </select></div>
-
-                <div class="team-info-row">
-                    <input type="text" id="team-name" class="form-input" placeholder="Team Name" required>
-                    <input type="text" id="team-org" class="form-input" placeholder="College / Organization" required>
-                </div>
-
-                <!-- 2 COLUMN GRID: Person 1 (Left) | Person 2 (Right) | Person 3 (Left) | Person 4 (Right) -->
+                <div class="team-info-row"><input type="text" id="team-name" class="form-input" placeholder="Team Name"
+                        required><input type="text" id="team-org" class="form-input"
+                        placeholder="College / Organization" required></div>
                 <div class="team-members-grid">
-                    <div class="member-card">
-                        <span class="member-badge lead"><i class="fa-regular fa-star"></i> TEAM LEAD</span>
-                        <input type="text" id="m1-name" class="form-input" placeholder="Full Name" required>
-                        <input type="email" id="m1-email" class="form-input" placeholder="Email" required>
-                        <input type="tel" id="m1-phone" class="form-input" placeholder="Phone" required>
-                        <input type="text" id="m1-usn" class="form-input" placeholder="USN" required>
-                    </div>
-                    <div class="member-card">
-                        <span class="member-badge">02</span>
-                        <input type="text" id="m2-name" class="form-input" placeholder="Full Name" required>
-                        <input type="email" id="m2-email" class="form-input" placeholder="Email" required>
-                        <input type="tel" id="m2-phone" class="form-input" placeholder="Phone" required>
-                        <input type="text" id="m2-usn" class="form-input" placeholder="USN" required>
-                    </div>
-                    <div class="member-card">
-                        <span class="member-badge">03</span>
-                        <input type="text" id="m3-name" class="form-input" placeholder="Full Name" required>
-                        <input type="email" id="m3-email" class="form-input" placeholder="Email" required>
-                        <input type="tel" id="m3-phone" class="form-input" placeholder="Phone" required>
-                        <input type="text" id="m3-usn" class="form-input" placeholder="USN" required>
-                    </div>
-                    <div class="member-card">
-                        <span class="member-badge">04</span>
-                        <input type="text" id="m4-name" class="form-input" placeholder="Full Name" required>
-                        <input type="email" id="m4-email" class="form-input" placeholder="Email" required>
-                        <input type="tel" id="m4-phone" class="form-input" placeholder="Phone" required>
-                        <input type="text" id="m4-usn" class="form-input" placeholder="USN" required>
-                    </div>
+                    <div class="member-card"><span class="member-badge lead"><i class="fa-regular fa-star"></i> TEAM
+                            LEAD</span><input type="text" id="m1-name" class="form-input" placeholder="Full Name"
+                            required><input type="email" id="m1-email" class="form-input" placeholder="Email"
+                            required><input type="tel" id="m1-phone" class="form-input" placeholder="Phone"
+                            required><input type="text" id="m1-usn" class="form-input" placeholder="USN" required></div>
+                    <div class="member-card"><span class="member-badge">02</span><input type="text" id="m2-name"
+                            class="form-input" placeholder="Full Name" required><input type="email" id="m2-email"
+                            class="form-input" placeholder="Email" required><input type="tel" id="m2-phone"
+                            class="form-input" placeholder="Phone" required><input type="text" id="m2-usn"
+                            class="form-input" placeholder="USN" required></div>
+                    <div class="member-card"><span class="member-badge">03</span><input type="text" id="m3-name"
+                            class="form-input" placeholder="Full Name" required><input type="email" id="m3-email"
+                            class="form-input" placeholder="Email" required><input type="tel" id="m3-phone"
+                            class="form-input" placeholder="Phone" required><input type="text" id="m3-usn"
+                            class="form-input" placeholder="USN" required></div>
+                    <div class="member-card"><span class="member-badge">04</span><input type="text" id="m4-name"
+                            class="form-input" placeholder="Full Name" required><input type="email" id="m4-email"
+                            class="form-input" placeholder="Email" required><input type="tel" id="m4-phone"
+                            class="form-input" placeholder="Phone" required><input type="text" id="m4-usn"
+                            class="form-input" placeholder="USN" required></div>
                 </div>
-
                 <div class="confirmation-box"><input type="checkbox" id="team-confirm"> <span>Confirm all team details
                         are correct</span></div>
                 <button type="submit" class="btn-primary w-100">Complete Team Registration</button>
@@ -1243,7 +1236,7 @@
         </div>
     </div>
 
-    <!-- Dashboard View (Compact) -->
+    <!-- Dashboard View - WITH COMPLETE PAYMENT DETAILS -->
     <div id="dashboard-view" class="hidden">
         <div class="dashboard-container">
             <div class="dashboard-header">
@@ -1281,70 +1274,118 @@
                 </div>
             </div>
 
+            <!-- Payment Section - WITH FULL DETAILS -->
             <div class="payment-card">
-                <div class="payment-header"><i class="fa-solid fa-credit-card"></i>
+                <div class="payment-header">
+                    <i class="fa-solid fa-circle-dollar-to-slot"></i>
                     <div>
-                        <h3>Payment</h3>
-                        <p id="dash-payment-desc">Complete payment</p>
+                        <h3>Payment & Verification</h3>
+                        <p>Complete payment to confirm your registration</p>
                     </div>
                 </div>
+
                 <div class="payment-amount-highlight" id="dash-payment-amount">₹---</div>
-                <div class="qr-wrapper">
-                    <div class="qr-box">
-                        <div id="payment-qr-code" style="width: 120px; height: 120px;"></div>
+
+                <div class="payment-details-grid">
+                    <!-- QR Code -->
+                    <div class="qr-wrapper">
+                        <div class="qr-box">
+                            <div id="payment-qr-code" style="width: 140px; height: 140px;"></div>
+                        </div>
+                        <div class="qr-label">Scan to pay via any UPI app</div>
+                    </div>
+
+                    <!-- Payment Information -->
+                    <div class="payment-info-details">
+                        <h4><i class="fa-solid fa-receipt"></i> Payment Details</h4>
+                        <ul>
+                            <li><i class="fa-brands fa-google-pay"></i><strong>UPI ID:</strong><span
+                                    style="color: var(--primary); font-weight: 700;">sachin.pratik97-1@okaxis</span>
+                            </li>
+                            <li><i class="fa-solid fa-user"></i><strong>Account Name:</strong><span>Sachin Pratik</span>
+                            </li>
+                            <li><i class="fa-solid fa-indian-rupee-sign"></i><strong>Amount:</strong><span
+                                    id="pay-amount-text" style="font-weight: 700;">₹---</span></li>
+                            <li><i class="fa-solid fa-building"></i><strong>Bank:</strong><span>Axis Bank</span></li>
+                            <li><i class="fa-regular fa-clock"></i><strong>Verification:</strong><span>Within 24-48
+                                    hours</span></li>
+                        </ul>
+                        <div class="payment-note">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span>After payment, note the 12-digit UTR number from your bank receipt and submit it
+                                below.</span>
+                        </div>
                     </div>
                 </div>
+
                 <div id="payment-status-display"
-                    style="background: var(--bg-surface); padding: 0.75rem; border-radius: 10px; margin: 0.75rem 0; font-size: 0.7rem;">
+                    style="background: var(--bg-surface); padding: 0.75rem; border-radius: 10px; margin: 1rem 0; font-size: 0.75rem; text-align: center;">
                 </div>
+
                 <div id="utr-section" style="display: none;">
-                    <div class="utr-input-group"><input type="text" id="utr-number" class="form-input"
-                            placeholder="UTR Number" maxlength="12"><button id="submit-utr-btn"
-                            class="btn-success">Submit</button></div>
+                    <div class="utr-input-group">
+                        <input type="text" id="utr-number" class="form-input" placeholder="Enter 12-digit UTR Number"
+                            maxlength="12">
+                        <button id="submit-utr-btn" class="btn-success"><i class="fa-solid fa-paper-plane"></i> Submit
+                            UTR</button>
+                    </div>
+                    <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.5rem;"><i
+                            class="fa-regular fa-lightbulb"></i> UTR is found in your payment receipt/bank statement</p>
                 </div>
-                <div class="payment-actions" style="display: flex; gap: 0.75rem; flex-wrap: wrap;"><button
-                        onclick="showUTRForm()" class="btn-primary" id="pay-btn">Submit UTR</button><button
-                        onclick="downloadPaymentInstructions()" class="btn-secondary">Instructions</button></div>
+
+                <div class="payment-actions">
+                    <button onclick="showUTRForm()" class="btn-primary" id="pay-btn"><i
+                            class="fa-solid fa-money-bill-wave"></i> Submit Payment UTR</button>
+                    <button onclick="downloadPaymentInstructions()" class="btn-secondary"><i
+                            class="fa-solid fa-download"></i> Download Instructions</button>
+                </div>
             </div>
 
+            <!-- Digital Entry Pass -->
             <div id="qr-section" class="payment-card" style="display: none;">
-                <div class="payment-header"><i class="fa-solid fa-qrcode"></i>
+                <div class="payment-header"><i class="fa-solid fa-qrcode" style="color: var(--success);"></i>
                     <div>
-                        <h3>Entry Pass</h3>
+                        <h3>Digital Entry Pass</h3>
+                        <p>Show this QR code at registration desk</p>
                     </div>
                 </div>
                 <div class="qr-code" id="entry-qr-code" style="margin: 0 auto;"></div>
                 <div class="text-center" style="margin-top: 0.75rem;"><button onclick="downloadQR()"
-                        class="btn-success">Download QR</button></div>
+                        class="btn-success"><i class="fa-solid fa-download"></i> Download QR Code</button></div>
             </div>
 
+            <!-- Project Submission -->
             <div class="payment-card">
                 <div class="payment-header"><i class="fa-solid fa-cloud-arrow-up"></i>
                     <div>
                         <h3>Project Submission</h3>
+                        <p>Submit your Google Drive link with all files</p>
                     </div>
                 </div>
-                <form id="submission-form"><textarea id="submission-link" class="form-input" rows="2"
-                        placeholder="Google Drive link" required></textarea><button type="submit"
-                        class="btn-primary w-100">Submit Link</button></form>
+                <form id="submission-form">
+                    <textarea id="submission-link" class="form-input" rows="2"
+                        placeholder="Google Drive / Cloud link containing project files, PPT, report..."
+                        required></textarea>
+                    <button type="submit" class="btn-primary w-100"><i class="fa-solid fa-upload"></i> Submit Project
+                        Link</button>
+                </form>
             </div>
 
             <div class="payment-card">
                 <div class="payment-header"><i class="fa-solid fa-award"></i>
                     <div>
                         <h3>Certifications</h3>
-                        <p style="font-size: 0.7rem;">After March 9th, 2026</p>
+                        <p>Participation certificates will be issued after March 9th, 2026</p>
                     </div>
                 </div>
             </div>
 
             <div class="text-center" style="margin: 1rem 0;"><button class="btn-secondary"
-                    onclick="switchView('landing')">← Back to Home</button></div>
+                    onclick="switchView('landing')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button></div>
         </div>
     </div>
 
     <script>
-        // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyCipUkkNySML4U1VI2fH1RyWgXYqvDMPRQ",
             authDomain: "airfoxer-hackathon.firebaseapp.com",
@@ -1376,19 +1417,14 @@
             if (view === 'landing') window.scrollTo(0, 0);
         }
 
-        function scrollToThemes() {
-            const section = document.getElementById('themes-section');
-            if (section) section.scrollIntoView({ behavior: 'smooth' });
-        }
+        function scrollToThemes() { document.getElementById('themes-section')?.scrollIntoView({ behavior: 'smooth' }); }
 
         function selectRegType(type) {
             document.getElementById('reg-type-selection').style.display = 'none';
             document.getElementById('solo-form').style.display = type === 'solo' ? 'block' : 'none';
             document.getElementById('team-form').style.display = type === 'team' ? 'block' : 'none';
-            const soloCard = document.getElementById('solo-type-card');
-            const teamCard = document.getElementById('team-type-card');
-            if (soloCard) soloCard.classList.toggle('active', type === 'solo');
-            if (teamCard) teamCard.classList.toggle('active', type === 'team');
+            document.getElementById('solo-type-card')?.classList.toggle('active', type === 'solo');
+            document.getElementById('team-type-card')?.classList.toggle('active', type === 'team');
         }
 
         // Solo Registration
@@ -1432,36 +1468,111 @@
             currentTeamData = { id: doc.id, ...doc.data() };
             const d = currentTeamData;
             const isSolo = d.registrationType === 'solo';
+            const fee = d.registrationFee || (isSolo ? 250 : 1000);
             document.getElementById('dash-team-name').innerText = d.teamName || 'Team';
             document.getElementById('dash-reg-type').innerHTML = isSolo ? '👤 Solo' : '👥 Team';
             document.getElementById('dash-theme').innerText = d.theme || '--';
-            document.getElementById('dash-payment-amount').innerText = `₹${d.registrationFee}`;
+            document.getElementById('dash-payment-amount').innerText = `₹${fee}`;
+            document.getElementById('pay-amount-text').innerHTML = `₹${fee}`;
             const statusBadge = document.getElementById('dash-status-badge');
             if (d.paymentStatus === 'verified') { statusBadge.className = 'status-badge badge-verified'; statusBadge.innerHTML = '<i class="fa-regular fa-circle-check"></i> Verified'; }
-            else { statusBadge.className = 'status-badge badge-pending'; statusBadge.innerHTML = '<i class="fa-regular fa-clock"></i> Pending'; }
+            else { statusBadge.className = 'status-badge badge-pending'; statusBadge.innerHTML = '<i class="fa-regular fa-clock"></i> Payment Pending'; }
+
             const roster = document.getElementById('team-members-list');
-            if (roster && d.members) roster.innerHTML = d.members.map((m, i) => `<div class="roster-member"><div><div class="roster-name">${m.name}</div><div class="roster-email">${m.email}</div>${m.usn ? `<div class="roster-email">USN: ${m.usn}</div>` : ''}</div><span class="roster-badge">${isSolo ? 'Solo' : (i === 0 ? 'Lead' : 'Member')}</span></div>`).join('');
+            if (roster && d.members) roster.innerHTML = d.members.map((m, i) => `<div class="roster-member"><div><div class="roster-name">${escapeHtml(m.name)}</div><div class="roster-email">${escapeHtml(m.email)}</div>${m.usn ? `<div class="roster-email">USN: ${escapeHtml(m.usn)}</div>` : ''}</div><span class="roster-badge">${isSolo ? 'Solo' : (i === 0 ? 'Lead' : 'Member')}</span></div>`).join('');
+
             if (d.codesGenerated) { document.getElementById('display-team-code').innerText = d.teamCode; document.getElementById('display-team-pass').innerText = d.teamPassword; document.getElementById('gen-btn').style.display = 'none'; }
-            const qrDiv = document.getElementById('payment-qr-code'); if (qrDiv && d.registrationFee) { qrDiv.innerHTML = ''; new QRCode(qrDiv, { text: `upi://pay?pa=sachin.pratik97-1@okaxis&pn=Sachin%20Pratik&am=${d.registrationFee}&cu=INR`, width: 120, height: 120 }); }
+
+            const qrDiv = document.getElementById('payment-qr-code');
+            if (qrDiv && fee) { qrDiv.innerHTML = ''; new QRCode(qrDiv, { text: `upi://pay?pa=sachin.pratik97-1@okaxis&pn=Sachin%20Pratik&am=${fee}&cu=INR`, width: 140, height: 140 }); }
+
             const paySnap = await db.collection('payments').where('teamId', '==', d.id).get();
             const paymentDiv = document.getElementById('payment-status-display');
-            if (paymentDiv) { if (!paySnap.empty) { const p = paySnap.docs[0].data(); paymentDiv.innerHTML = `<strong>Status: ${p.status.toUpperCase()}</strong><br>UTR: ${p.utrNumber}`; } else { paymentDiv.innerHTML = 'No payment submitted'; } }
-            if (d.status === 'verified' && d.paymentStatus === 'verified') { const qrSection = document.getElementById('qr-section'); if (qrSection) qrSection.style.display = 'block'; const entryQr = document.getElementById('entry-qr-code'); if (entryQr) { entryQr.innerHTML = ''; new QRCode(entryQr, { text: JSON.stringify({ id: d.id, name: d.teamName }), width: 130, height: 130 }); } }
+            if (paymentDiv) {
+                if (!paySnap.empty) {
+                    const p = paySnap.docs[0].data(); paymentDiv.innerHTML = `<strong>Status: ${p.status.toUpperCase()}</strong><br>UTR: ${p.utrNumber}<br>Submitted: ${p.submittedAt?.toDate?.().toLocaleDateString() || 'N/A'}`;
+                    if (p.status === 'pending') document.getElementById('utr-section').style.display = 'none';
+                }
+                else { paymentDiv.innerHTML = 'No payment submitted yet'; }
+            }
+
+            if (d.status === 'verified' && d.paymentStatus === 'verified') {
+                const qrSection = document.getElementById('qr-section');
+                if (qrSection) qrSection.style.display = 'block';
+                const entryQr = document.getElementById('entry-qr-code');
+                if (entryQr) { entryQr.innerHTML = ''; new QRCode(entryQr, { text: JSON.stringify({ id: d.id, name: d.teamName }), width: 130, height: 130 }); }
+            }
         }
 
+        function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function (m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
+
         function showUTRForm() { document.getElementById('utr-section').style.display = 'block'; document.getElementById('pay-btn').style.display = 'none'; }
-        document.getElementById('submit-utr-btn')?.addEventListener('click', async () => { const utr = document.getElementById('utr-number').value; if (utr.length < 10) return notify("Valid UTR required", "error"); await db.collection('payments').add({ teamId: currentTeamData.id, teamName: currentTeamData.teamName, utrNumber: utr, status: 'pending', amount: currentTeamData.registrationFee, submittedAt: firebase.firestore.FieldValue.serverTimestamp() }); await db.collection('teams').doc(currentTeamData.id).update({ paymentStatus: 'pending' }); notify("UTR submitted!", "success"); document.getElementById('utr-section').style.display = 'none'; loadDashboard(); });
-        document.getElementById('submission-form')?.addEventListener('submit', async (e) => { e.preventDefault(); const link = document.getElementById('submission-link').value; if (!link) return notify("Enter link", "error"); await db.collection('teams').doc(currentTeamData.id).update({ projectSubmitted: true, submissionLinks: link }); notify("Submitted!", "success"); });
-        async function generateAccessCodes() { const code = currentTeamData.teamName.replace(/\s/g, '').substring(0, 4).toUpperCase() + "-" + Math.floor(1000 + Math.random() * 9000); const pass = Math.random().toString(36).substring(2, 8).toUpperCase(); await db.collection('teams').doc(currentTeamData.id).update({ teamCode: code, teamPassword: pass, codesGenerated: true }); loadDashboard(); notify("Credentials generated!", "success"); }
-        function downloadPaymentInstructions() { const content = `UPI: sachin.pratik97-1@okaxis\nName: Sachin Pratik\nAmount: ₹${currentTeamData?.registrationFee}`; const blob = new Blob([content], { type: 'text/plain' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'payment.txt'; a.click(); }
-        function downloadQR() { const canvas = document.querySelector('#entry-qr-code canvas'); if (canvas) { const a = document.createElement('a'); a.href = canvas.toDataURL(); a.download = 'entry_pass.png'; a.click(); } }
+
+        document.getElementById('submit-utr-btn')?.addEventListener('click', async () => {
+            const utr = document.getElementById('utr-number').value;
+            if (utr.length < 10) return notify("Valid UTR required (10-12 digits)", "error");
+            await db.collection('payments').add({ teamId: currentTeamData.id, teamName: currentTeamData.teamName, utrNumber: utr, status: 'pending', amount: currentTeamData.registrationFee, submittedAt: firebase.firestore.FieldValue.serverTimestamp() });
+            await db.collection('teams').doc(currentTeamData.id).update({ paymentStatus: 'pending' });
+            notify("UTR submitted! Admin will verify.", "success");
+            document.getElementById('utr-section').style.display = 'none';
+            document.getElementById('utr-number').value = '';
+            loadDashboard();
+        });
+
+        document.getElementById('submission-form')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const link = document.getElementById('submission-link').value;
+            if (!link) return notify("Enter Google Drive link", "error");
+            await db.collection('teams').doc(currentTeamData.id).update({ projectSubmitted: true, submissionLinks: link, submissionDate: firebase.firestore.FieldValue.serverTimestamp() });
+            notify("Project link submitted!", "success");
+            document.getElementById('submission-link').value = '';
+        });
+
+        async function generateAccessCodes() {
+            const code = currentTeamData.teamName.replace(/\s/g, '').substring(0, 4).toUpperCase() + "-" + Math.floor(1000 + Math.random() * 9000);
+            const pass = Math.random().toString(36).substring(2, 8).toUpperCase();
+            await db.collection('teams').doc(currentTeamData.id).update({ teamCode: code, teamPassword: pass, codesGenerated: true });
+            loadDashboard();
+            notify("Credentials generated!", "success");
+        }
+
+        function downloadPaymentInstructions() {
+            const content = `TECHMASTER HACKATHON 2026 PAYMENT INSTRUCTIONS\n\nUPI ID: sachin.pratik97-1@okaxis\nAccount Name: Sachin Pratik\nBank: Axis Bank\nAmount: ₹${currentTeamData?.registrationFee || '---'}\n\nSteps:\n1. Open any UPI app (Google Pay, PhonePe, Paytm)\n2. Scan QR code or enter UPI ID\n3. Enter the exact amount\n4. Make payment\n5. Save the transaction receipt\n6. Note the 12-digit UTR number\n7. Submit UTR in dashboard for verification\n\nVerification takes 24-48 hours.`;
+            const blob = new Blob([content], { type: 'text/plain' });
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'TechMaster_Payment_Instructions.txt'; a.click(); URL.revokeObjectURL(a.href);
+        }
+
+        function downloadQR() { const canvas = document.querySelector('#entry-qr-code canvas'); if (canvas) { const a = document.createElement('a'); a.href = canvas.toDataURL(); a.download = 'entry_pass.png'; a.click(); } else { notify("QR not ready", "error"); } }
 
         // Auth
         document.getElementById('google-btn')?.addEventListener('click', async () => { try { await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()); } catch (e) { notify("Login failed", "error"); } });
-        document.getElementById('login-form')?.addEventListener('submit', async (e) => { e.preventDefault(); const email = document.getElementById('login-email').value, pwd = document.getElementById('login-password').value; try { await auth.signInWithEmailAndPassword(email, pwd); } catch (e) { notify("Invalid credentials", "error"); } });
-        auth.onAuthStateChanged(async (user) => { currentUser = user; if (user) { document.getElementById('guest-nav').classList.add('hidden'); document.getElementById('auth-nav').classList.remove('hidden'); document.getElementById('lead-display').innerText = user.email; const existing = await db.collection('teams').where('leadId', '==', user.uid).get(); if (!existing.empty) switchView('dashboard'); else switchView('register'); } else { document.getElementById('guest-nav').classList.remove('hidden'); document.getElementById('auth-nav').classList.add('hidden'); switchView('landing'); } });
-        function toggleTheme() { document.body.classList.toggle('light-mode'); const icon = document.getElementById('theme-icon'); if (document.body.classList.contains('light-mode')) icon.classList.replace('fa-sun', 'fa-moon'); else icon.classList.replace('fa-moon', 'fa-sun'); }
+        document.getElementById('login-form')?.addEventListener('submit', async (e) => { e.preventDefault(); try { await auth.signInWithEmailAndPassword(document.getElementById('login-email').value, document.getElementById('login-password').value); } catch (e) { notify("Invalid credentials", "error"); } });
+
+        auth.onAuthStateChanged(async (user) => {
+            currentUser = user;
+            if (user) {
+                document.getElementById('guest-nav').classList.add('hidden');
+                document.getElementById('auth-nav').classList.remove('hidden');
+                document.getElementById('lead-display').innerText = user.email;
+                const existing = await db.collection('teams').where('leadId', '==', user.uid).get();
+                if (!existing.empty) switchView('dashboard');
+                else switchView('register');
+            } else {
+                document.getElementById('guest-nav').classList.remove('hidden');
+                document.getElementById('auth-nav').classList.add('hidden');
+                switchView('landing');
+            }
+        });
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.getElementById('theme-icon');
+            if (document.body.classList.contains('light-mode')) icon.classList.replace('fa-sun', 'fa-moon');
+            else icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
         function logout() { auth.signOut(); notify("Logged out", "success"); }
+
         window.addEventListener('scroll', () => { const nav = document.getElementById('navbar'); if (nav) { if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); } });
         document.querySelectorAll('.theme-card').forEach(card => { card.addEventListener('click', () => { const theme = card.getAttribute('data-theme'); if (theme) notify(`"${theme}" theme selected. Login to register.`, "info"); }); });
         if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light-mode'); const icon = document.getElementById('theme-icon'); if (icon) icon.classList.replace('fa-sun', 'fa-moon'); }
